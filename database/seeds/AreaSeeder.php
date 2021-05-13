@@ -13,20 +13,28 @@ class AreaSeeder extends Seeder
     public function run()
     {
         DB::table('area')->insert([
-            'descripcion' => 'Mesa de Partes', 
-            'mesadepartes' => true         
+            'descripcion' => 'Área de Ventas', 
         ]);
         DB::table('area')->insert([
-            'descripcion' => 'Area 2',
+            'descripcion' => 'Area de Tesorería',
         ]);
         DB::table('area')->insert([
-            'descripcion' => 'Area 3',
+            'descripcion' => 'Area de Compras',
         ]);
         DB::table('area')->insert([
-            'descripcion' => 'Area 4',
+            'descripcion' => 'Area de Recepción',
         ]);
         DB::table('area')->insert([
-            'descripcion' => 'Area 5',
+            'descripcion' => 'Area de Nóminas',
+        ]);
+        DB::table('area')->insert([
+            'descripcion' => 'Area de RRHH',
+        ]);
+        DB::table('area')->insert([
+            'descripcion' => 'Area de Contabilidad',
+        ]);
+        DB::table('area')->insert([
+            'descripcion' => 'Area de Cuentas por Pagar',
         ]);
     }
 }

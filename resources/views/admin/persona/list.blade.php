@@ -18,8 +18,8 @@
 		@foreach ($lista as $key => $value)
         <tr>
 			<td>{{ $contador }}</td>
-			<td>{{ $value->apellidopaterno.' '.$value->apellidomaterno.' '.$value->nombres }}</td>			
-			<td>{{ $value->dni }}</td>
+			<td>{{ ($value->ruc!=null || $value->ruc!='') ? $value->razonsocial : ($value->apellidopaterno.' '.$value->apellidomaterno.' '.$value->nombres) }}</td>			
+			<td>{{ ($value->ruc!=null || $value->ruc!='') ? $value->ruc :  $value->dni }}</td>
 			<td>{{ isset($value->direccion) ? $value->direccion : "-" }}</td>
 			<td>{{ $value->telefono }}</td>
 			<td>{{ isset($value->email) ? $value->email : '-' }}</td>

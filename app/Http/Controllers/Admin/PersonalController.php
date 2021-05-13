@@ -10,14 +10,15 @@ use App\Models\Admin\Rol;
 use App\Models\Control\Area;
 use Illuminate\Support\Facades\DB;
 use App\Librerias\Libreria;
+use Http\Adapter\Guzzle6\Client;
 
 class PersonalController extends Controller
 {
     protected $folderview      = 'admin.persona';
-    protected $tituloAdmin     = 'Personal';
-    protected $tituloRegistrar = 'Registrar personal';
-    protected $tituloModificar = 'Modificar personal';
-    protected $tituloEliminar  = 'Eliminar personal';
+    protected $tituloAdmin     = 'Persona';
+    protected $tituloRegistrar = 'Registrar Persona';
+    protected $tituloModificar = 'Modificar Persona';
+    protected $tituloEliminar  = 'Eliminar Persona';
     protected $rutas           = array(
         'create' => 'persona.create',
         'edit'   => 'persona.edit',
@@ -47,13 +48,14 @@ class PersonalController extends Controller
         $nombres          = Libreria::getParam($request->input('nombres'));
         $dni              = Libreria::getParam($request->input('dni'));
         $area_id          = Libreria::getParam($request->input('area'));
+        $rol          = Libreria::getParam($request->input('rol'));
         $cargo_id         = Libreria::getParam($request->input('cargo'));
-        $resultado        = Personal::listar($nombres, $dni, $area_id, $cargo_id);
+        $resultado        = Personal::listar($nombres, $dni, $area_id, $cargo_id, $rol);
         $lista            = $resultado->get();
         $cabecera         = array();
         $cabecera[]       = array('valor' => '#', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Apellidos y Nombres', 'numero' => '1');
-        $cabecera[]       = array('valor' => 'DNI', 'numero' => '1');
+        $cabecera[]       = array('valor' => 'DNI/RUC', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Direccion', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Telefono', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Correo', 'numero' => '1');
@@ -90,7 +92,7 @@ class PersonalController extends Controller
         $ruta             = $this->rutas;
         $cboAreas = ['' => 'TODAS'] + Area::pluck('descripcion', 'id')->all();
         $cboCargos = ['' => 'TODOS'] + Cargo::pluck('descripcion', 'id')->all();
-        $cboRol = [''=>'TODOS'];
+        $cboRol = [''=>'TODOS'] + Rol::pluck('descripcion', 'id')->all();
         $rol = Rol::orderBy('descripcion', 'asc')->get();
         foreach ($rol as $k => $v) {
             $cboRol = $cboRol + array($v->id => $v->descripcion);
@@ -126,27 +128,42 @@ class PersonalController extends Controller
     public function store(Request $request)
     {
         $listar     = Libreria::getParam($request->input('listar'), 'NO');
-        $reglas     = array(
-            'nombres' => 'required|max:50',
-            'dni' => 'required|numeric|min:10000000|max:99999999|unique:personal,dni,' . 'id',
-            'apellidopaterno' => 'required|max:50',
-            'apellidomaterno' => 'required|max:50',
-            'rol_id' => 'required',
-            'area_id'=>'required',
-            'cargo_id'=>'required',
-        );
-        $mensajes = array(
-            'nombre.required'         => 'Debe ingresar un nombre',
-            'apellidopaterno.required'         => 'Debe ingresar el apellido paterno',
-            'apellidomaterno.required'         => 'Debe ingresar el apellido materno',
-            'rol_id.required'         => 'Debe seleccionar al menos un Rol',
-            'dni.unique'=>'La persona con el DNI ingresado ya se encuentra registrado',
-            'dni.required'=>'El campo DNI es obligatorio',
-            'dni.min'=>'El DNI es incorrecto',
-            'dni.max'=>'El DNI es incorrecto',
-            'cargo_id.required'=>'El campo Cargo es obligatorio',
-            'area_id.required'=>'El campo Área es obligatorio',
-        );
+        if($request->quetipoes=='Proveedor'){
+            $reglas     = array(
+                'ruc' => 'required',
+                'razonsocial' => 'required',
+                'direccion' => 'required',
+            );
+            $mensajes = array(
+                'ruc.required'         => 'Debe ingresar el número de RUC',
+                'razonsocial.required'         => 'Debe ingresar la Razon Social',
+                'direccion.required'         => 'Debe ingresar una dirección',
+                
+            );
+        }else{
+            $reglas     = array(
+                'nombres' => 'required|max:50',
+                'dni' => 'required|numeric|min:10000000|max:99999999|unique:personal,dni,' . 'id',
+                'apellidopaterno' => 'required|max:50',
+                'apellidomaterno' => 'required|max:50',
+                'rol_id' => 'required',
+                'area_id'=>'required',
+                'cargo_id'=>'required',
+            );
+            $mensajes = array(
+                'nombre.required'         => 'Debe ingresar un nombre',
+                'apellidopaterno.required'         => 'Debe ingresar el apellido paterno',
+                'apellidomaterno.required'         => 'Debe ingresar el apellido materno',
+                'rol_id.required'         => 'Debe seleccionar al menos un Rol',
+                'dni.unique'=>'La persona con el DNI ingresado ya se encuentra registrado',
+                'dni.required'=>'El campo DNI es obligatorio',
+                'dni.min'=>'El DNI es incorrecto',
+                'dni.max'=>'El DNI es incorrecto',
+                'cargo_id.required'=>'El campo Cargo es obligatorio',
+                'area_id.required'=>'El campo Área es obligatorio',
+            );
+        }
+        
         $validacion = Validator::make($request->all(), $reglas, $mensajes);
         if ($validacion->fails()) {
             return $validacion->messages()->toJson();
@@ -158,6 +175,7 @@ class PersonalController extends Controller
                 'nombres' => strtoupper($request->input('nombres')),
                 'dni' => strtoupper($request->input('dni')),           
                 'ruc' => strtoupper($request->input('ruc')),           
+                'razonsocial' => strtoupper($request->input('razonsocial')),           
                 'direccion' => strtoupper($request->input('direccion')),
                 'email' => $request->input('email'),       
                 'telefono' => strtoupper($request->input('telefono')),
@@ -207,26 +225,40 @@ class PersonalController extends Controller
         if ($existe !== true) {
             return $existe;
         }
-        $reglas     = array(
-            'nombres' => 'required|max:50',
-            'apellidopaterno' => 'required|max:50',
-            'apellidomaterno' => 'required|max:50',
-            'rol_id' => 'required',
-            'area_id'=>'required',
-            'cargo_id'=>'required',
-        );
-        $mensajes = array(
-            'nombre.required'         => 'Debe ingresar un nombre',
-            'apellidopaterno.required'         => 'Debe ingresar el apellido paterno',
-            'apellidomaterno.required'         => 'Debe ingresar el apellido materno',
-            'rol_id.required'         => 'Debe seleccionar al menos un Rol',
-            'dni.unique'=>'La persona con el DNI ingresado ya se encuentra registrado',
-            'dni.required'=>'El campo DNI es obligatorio',
-            'dni.min'=>'El DNI es incorrecto',
-            'dni.max'=>'El DNI es incorrecto',
-            'cargo_id.required'=>'El campo Cargo es obligatorio',
-            'area_id.required'=>'El campo Área es obligatorio',
-        );
+        if($request->quetipoes=='Persona'){
+            $reglas     = array(
+                'nombres' => 'required|max:50',
+                'apellidopaterno' => 'required|max:50',
+                'apellidomaterno' => 'required|max:50',
+                'rol_id' => 'required',
+                'area_id'=>'required',
+                'cargo_id'=>'required',
+            );
+            $mensajes = array(
+                'nombre.required'         => 'Debe ingresar un nombre',
+                'apellidopaterno.required'         => 'Debe ingresar el apellido paterno',
+                'apellidomaterno.required'         => 'Debe ingresar el apellido materno',
+                'rol_id.required'         => 'Debe seleccionar al menos un Rol',
+                'dni.unique'=>'La persona con el DNI ingresado ya se encuentra registrado',
+                'dni.required'=>'El campo DNI es obligatorio',
+                'dni.min'=>'El DNI es incorrecto',
+                'dni.max'=>'El DNI es incorrecto',
+                'cargo_id.required'=>'El campo Cargo es obligatorio',
+                'area_id.required'=>'El campo Área es obligatorio',
+            );
+        }else{
+            $reglas     = array(
+                'ruc' => 'required',
+                'razonsocial' => 'required',
+                'direccion' => 'required',
+            );
+            $mensajes = array(
+                'ruc.required'         => 'Debe ingresar el número de RUC',
+                'razonsocial.required'         => 'Debe ingresar la Razon Social',
+                'direccion.required'         => 'Debe ingresar una dirección',
+                
+            );
+        }
         $validacion = Validator::make($request->all(), $reglas, $mensajes);
         if ($validacion->fails()) {
             return $validacion->messages()->toJson();
@@ -239,6 +271,7 @@ class PersonalController extends Controller
                 'nombres' => strtoupper($request->input('nombres')),
                 'dni' => strtoupper($request->input('dni')),           
                 'ruc' => strtoupper($request->input('ruc')),           
+                'razonsocial' => strtoupper($request->input('ruc')),           
                 'direccion' => strtoupper($request->input('direccion')),
                 'email' => $request->input('email'),       
                 'telefono' => strtoupper($request->input('telefono')),
@@ -285,6 +318,18 @@ class PersonalController extends Controller
         $formData = array('route' => array('persona.destroy', $id), 'method' => 'DELETE', 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton    = 'Eliminar';
         return view('reusable.confirmarEliminar')->with(compact('modelo', 'formData', 'entidad', 'boton', 'listar'));
+    }
+
+    public function buscarRUC(Request $request){
+        $respuesta = array();
+        $ruc = $request->input('ruc');
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('http://157.245.85.164/facturacion/buscaCliente/BuscaClienteRuc.php?fe=N&token=qusEj_w7aHEpX&' . 'ruc=' . $ruc);
+        if ($res->getStatusCode() == 200) { // 200 OK
+            $response_data = $res->getBody()->getContents();
+            $respuesta = json_decode($response_data);
+        }
+        return json_encode($respuesta);
     }
 
 

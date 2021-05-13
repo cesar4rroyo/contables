@@ -8,4 +8,5 @@
       </div>
       <!-- /.content-header -->
   
-      </div>
+</div>
+@include("theme/$theme/footer")

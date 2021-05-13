@@ -23,7 +23,7 @@ class GrupoMenuSeeder extends Seeder
             'orden' => 2,
         ]);
         DB::table('grupomenu')->insert([
-            'descripcion' => 'Personal',
+            'descripcion' => 'Persona',
             'icono' => 'fas fa-user-tie',
             'orden' => 3,
         ]);

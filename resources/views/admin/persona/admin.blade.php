@@ -27,6 +27,10 @@
 							{!! Form::label('cargo', 'Cargo:') !!}
 							{!! Form::select('cargo', $cboCargos, null, array('class' => 'form-control input-xs', 'id' => 'cargo')) !!}
 						</div>
+						<div class="col-lg-4 col-md-4  form-group">
+							{!! Form::label('rol', 'Rol:') !!}
+							{!! Form::select('rol', $cboRol, null, array('class' => 'form-control input-xs', 'id' => 'rol')) !!}
+						</div>
                         <div class="col-lg-2 col-md-2  form-group" style="min-width: 150px;">
                             {!! Form::label('nombre', 'Filas a mostrar') !!}
                             {!! Form::selectRange('filas', 1, 30, 10, array('class' => 'form-control input-xs', 'onchange' => 'buscar(\''.$entidad.'\')')) !!}
@@ -80,6 +84,9 @@
 			buscar('{{ $entidad }}');
 		});
 		$(IDFORMBUSQUEDA + '{{ $entidad }} :input[id="area"]').change(function (e) {
+			buscar('{{ $entidad }}');
+		});
+		$(IDFORMBUSQUEDA + '{{ $entidad }} :input[id="rol"]').change(function (e) {
 			buscar('{{ $entidad }}');
 		});
 	});

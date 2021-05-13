@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     /* Rutas Perfil & Cambio Contraseña */
     Route::get('persona/perfil', 'Admin\UsuarioController@perfil')->name('usuario.perfil');
     Route::post('persona/password/{id}', 'Admin\UsuarioController@cambiarpassword')->name('usuario.cambiarpassword');
-
+    Route::post('persona/buscarRUC', 'Admin\PersonalController@buscarRUC')->name('persona.buscarRUC');
 
     /* Rutas de PERSONA */
     Route::post('persona/buscar', 'Admin\PersonalController@buscar')->name('persona.buscar');

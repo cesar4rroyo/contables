@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistema</title>
+    <title>SISCONT</title>
     <link rel="shortcut icon" href="{{asset("assets/$theme/dist/img/AdminLTELogo.png")}}" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -28,7 +28,6 @@
                     @include("theme/$theme/home")
             </section>
         </div>
-        {{-- @include("theme/$theme/footer") --}}
     </div>
 
     <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>

@@ -10,7 +10,7 @@ class OpcionMenuSeeder extends Seeder
     {
         //start Grupo Personal
         DB::table('opcionmenu')->insert([
-            'descripcion' => 'Personal',
+            'descripcion' => 'Persona',
             'icono' => 'fas fa-user-alt',
             'link' => 'persona',
             'orden' => 1,
@@ -33,100 +33,10 @@ class OpcionMenuSeeder extends Seeder
         //end Grupo Persona
         
         //start Control        
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Procedimiento',
-            'icono' => 'far fa-file-alt',
-            'link' => 'procedimiento',
-            'orden' => 2,
-            'grupomenu_id' => 2
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Motivo rechazo',
-            'icono' => 'fas fa-book-open',
-            'link' => 'motivorechazo',
-            'orden' => 3,
-            'grupomenu_id' => 2
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Motivo courier',
-            'icono' => 'fas fa-book-open',
-            'link' => 'motivocourier',
-            'orden' => 4,
-            'grupomenu_id' => 2
-        ]); 
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Empresa courier',
-            'icono' => 'fas fa-book-open',
-            'link' => 'empresacourier',
-            'orden' =>5,
-            'grupomenu_id' => 2
-        ]); 
-
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Archivador',
-            'icono' => 'far fa-file-alt',
-            'link' => 'archivador',
-            'orden' =>6,
-            'grupomenu_id' => 2
-        ]); 
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Tipo de Documento',
-            'icono' => 'far fa-file-alt',
-            'link' => 'tipodocumento',
-            'orden' =>7,
-            'grupomenu_id' => 2
-        ]); 
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Tipo de trámite',
-            'icono' => 'far fa-file-alt',
-            'link' => 'tipotramitenodoc',
-            'orden' =>8,
-            'grupomenu_id' => 2
-        ]); 
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Subtipo de trámite',
-            'icono' => 'far fa-file-alt',
-            'link' => 'subtipotramitenodoc',
-            'orden' =>9,
-            'grupomenu_id' => 2
-        ]); 
+        
         //end Control
         //start Gestion documentos        
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Trámites',
-            'icono' => 'far fa-file-alt',
-            'link' => 'tramite',
-            'orden' => 2,
-            'grupomenu_id' => 1
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Órdenes de Pago',
-            'icono' => 'fas fa-file-invoice-dollar',
-            'link' => 'ordenpago',
-            'orden' => 3,
-            'grupomenu_id' => 1
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Inspección',
-            'icono' => 'far fa-lightbulb',
-            'link' => 'inspeccion',
-            'orden' => 4,
-            'grupomenu_id' => 1
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Resolucion',
-            'icono' => 'far fa-file-invoice',
-            'link' => 'resolucion',
-            'orden' => 5,
-            'grupomenu_id' => 1
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Notificación o Carta',
-            'icono' => 'far fa-file-invoice',
-            'link' => 'carta',
-            'orden' => 6,
-            'grupomenu_id' => 1
-        ]);
+       
        /*  DB::table('opcionmenu')->insert([
             'descripcion' => 'Solicitud o Expediente',
             'icono' => 'far fa-file-alt',
@@ -190,20 +100,7 @@ class OpcionMenuSeeder extends Seeder
         //end Grupo Usuarios
 
         //Grupo reportes
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Reporte trámites',
-            'icono' => 'fas fa-chart-line',
-            'link' => 'reportetramite',
-            'orden' => 1,
-            'grupomenu_id' => 5
-        ]);
-        DB::table('opcionmenu')->insert([
-            'descripcion' => 'Reporte Inspección',
-            'icono' => 'fas fa-chart-line',
-            'link' => 'reporteInspeccion',
-            'orden' => 2,
-            'grupomenu_id' => 5
-        ]);
+        
 
         //end Grupo Reportes
 

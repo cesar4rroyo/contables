@@ -15,9 +15,14 @@ class RolSeeder extends Seeder
         DB::table('rol')->insert([
             'descripcion' => 'Usuario',
         ]);
-       
         DB::table('rol')->insert([
             'descripcion' => 'Personal',
+        ]);
+        DB::table('rol')->insert([
+            'descripcion' => 'Cliente',
+        ]);
+        DB::table('rol')->insert([
+            'descripcion' => 'Proveedor',
         ]);
     }
 }

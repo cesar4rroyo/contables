@@ -23,7 +23,9 @@ class Personal extends Model
         'telefono',
         'email',
         'area_id',
-        'cargo_id'
+        'cargo_id',
+        'ruc',
+        'razonsocial'
     ];
     //funciones para el mantenimiento
     public function cargo()
@@ -60,7 +62,7 @@ class Personal extends Model
         return $this->apellidopaterno . ' ' . $this->apellidomaterno . ' ' . $this->nombres;
     }
 
-    public function scopelistar($query, $nombre, $dni = null, $area_id = null, $cargo_id = null)
+    public function scopelistar($query, $nombre, $dni = null, $area_id = null, $cargo_id = null, $rol=null)
     {
         return $query->where(function ($subquery) use ($nombre) {
             if (!is_null($nombre)) {
@@ -80,6 +82,11 @@ class Personal extends Model
             ->where(function ($subquery) use ($cargo_id) {
                 if (!is_null($cargo_id)) {
                     $subquery->where('cargo_id', '=', $cargo_id);
+                }
+            })
+            ->wherehas('roles', function($q2) use ($rol){
+                if (!is_null($rol)) {
+                    $q2->where('rol_id', '=', $rol);
                 }
             })
             ->orderBy('apellidopaterno', 'ASC');        
