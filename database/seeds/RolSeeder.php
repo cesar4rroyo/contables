@@ -16,13 +16,13 @@ class RolSeeder extends Seeder
             'descripcion' => 'Usuario',
         ]);
         DB::table('rol')->insert([
-            'descripcion' => 'Personal',
+            'descripcion' => 'Empleado',
         ]);
         DB::table('rol')->insert([
             'descripcion' => 'Cliente',
         ]);
         DB::table('rol')->insert([
-            'descripcion' => 'Proveedor',
+            'descripcion' => 'Empresa',
         ]);
     }
 }

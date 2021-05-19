@@ -31,11 +31,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($personas as $key=>$persona)
+                                @foreach ($personas as $persona)
                                 <tr>
                                     <td>
                                         
-                                        {{$persona["nombres"] }}{{" "}}{{$persona["apellidopaterno"]}}{{" "}}{{$persona["apellidomaterno"]}}
+                                        {{!($persona->razonsocial) ? $persona->nombres . ' ' . $persona->apellidopaterno . ' ' . $persona->apellidomaterno : $persona->razonsocial}}
                                        
                                     </td>
                                     @foreach ($roles as $id=>$nombre)

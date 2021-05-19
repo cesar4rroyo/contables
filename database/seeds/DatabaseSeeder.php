@@ -21,8 +21,10 @@ class DatabaseSeeder extends Seeder
             'personal',
             'usuario',
             'acceso',
-            // 'procedimiento',
-            'rolpersonal',
+            'activo',
+            'impuesto',
+            'proveedor',
+            'producto',
         ]);
         $this->call(CargoSeeder::class);
         $this->call(AreaSeeder::class);
@@ -33,6 +35,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PersonalSeeder::class);
         $this->call(UsuarioSeeder::class);
         $this->call(AccesoSeeder::class);
+        $this->call(ActivoSeeder::class);
+        $this->call(ImpuestoSeeder::class);
+        $this->call(ProveedorSeeder::class);
+        $this->call(ProductoSeeder::class);
         // $this->call(ProcedimientoSeeder::class);
         //$this->call(RolPersonaSeeder::class);
     }

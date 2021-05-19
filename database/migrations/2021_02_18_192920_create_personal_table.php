@@ -21,6 +21,7 @@ class CreatePersonalTable extends Migration
             $table->string('nombres', 200)->nullable();
             $table->string('ruc')->nullable();
             $table->string('razonsocial', 200)->nullable();
+            $table->string('representante', 200)->nullable();
             $table->string('telefono')->nullable();
             $table->string('direccion', 200)->nullable();
             $table->string('email', 200)->nullable();

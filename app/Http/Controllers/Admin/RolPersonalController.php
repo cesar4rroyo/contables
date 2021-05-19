@@ -22,7 +22,7 @@ class RolPersonalController extends Controller
     public function index()
     {
         $roles = Rol::orderBy('id')->pluck('descripcion', 'id')->toArray();
-        $personas = Personal::with('roles')->get()->toArray();
+        $personas = Personal::with('roles')->get();
         $personasroles = Personal::with('roles')
             ->get()
             ->pluck('roles', 'id')

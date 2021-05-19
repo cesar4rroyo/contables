@@ -50,7 +50,7 @@ class PersonalController extends Controller
         $area_id          = Libreria::getParam($request->input('area'));
         $rol          = Libreria::getParam($request->input('rol'));
         $cargo_id         = Libreria::getParam($request->input('cargo'));
-        $resultado        = Personal::listar($nombres, $dni, $area_id, $cargo_id, $rol);
+        $resultado        = Personal::orderBy('apellidopaterno', 'ASC');  
         $lista            = $resultado->get();
         $cabecera         = array();
         $cabecera[]       = array('valor' => '#', 'numero' => '1');
