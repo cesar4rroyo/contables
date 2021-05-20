@@ -22,6 +22,8 @@ class CreateInventarioTable extends Migration
             $table->integer('activo_id')->unsigned()->nullable();
             $table->foreign('activo_id')->references('id')->on('activo')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

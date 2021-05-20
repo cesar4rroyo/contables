@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Control\Producto;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -100,9 +101,51 @@ class OpcionMenuSeeder extends Seeder
         //end Grupo Usuarios
 
         //Grupo reportes
-        
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reporte de Inventario de Productos',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'reporteinventario',
+            'orden' => 1,
+            'grupomenu_id' => 5
+        ]);
+
+
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Compras',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'compra',
+            'orden' => 1,
+            'grupomenu_id' => 7
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Ventas',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'venta',
+            'orden' => 2,
+            'grupomenu_id' => 6
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Activos Fijos',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'compraactivos',
+            'orden' => 3,
+            'grupomenu_id' => 7
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Asesoria',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'asesoria',
+            'orden' => 4,
+            'grupomenu_id' => 6
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Nominas',
+            'icono' => 'fas fa-list-ol',
+            'link' => 'nomina',
+            'orden' => 5,
+            'grupomenu_id' => 8
+        ]);
 
         //end Grupo Reportes
-
     }
 }

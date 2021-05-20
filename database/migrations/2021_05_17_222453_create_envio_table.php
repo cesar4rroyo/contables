@@ -22,6 +22,8 @@ class CreateEnvioTable extends Migration
             $table->integer('venta_id')->unsigned()->nullable();
             $table->foreign('venta_id')->references('id')->on('venta')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -26,6 +26,8 @@ class CreateDetalleventaTable extends Migration
             $table->integer('descuento_id')->unsigned()->nullable();
             $table->foreign('descuento_id')->references('id')->on('descuento')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

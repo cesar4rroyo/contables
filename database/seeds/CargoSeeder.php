@@ -22,9 +22,6 @@ class CargoSeeder extends Seeder
             'descripcion' => 'Consultor',
         ]);
         DB::table('cargo')->insert([
-            'descripcion' => 'Asesor',
-        ]);
-        DB::table('cargo')->insert([
             'descripcion' => 'Asistente',
         ]);
         DB::table('cargo')->insert([
@@ -34,7 +31,19 @@ class CargoSeeder extends Seeder
             'descripcion' => 'Encargado',
         ]);
         DB::table('cargo')->insert([
-            'descripcion' => 'Empleado',
+            'descripcion' => 'Responsable',
+        ]);
+        DB::table('cargo')->insert([
+            'descripcion' => 'Tesorero',
+        ]);
+        DB::table('cargo')->insert([
+            'descripcion' => 'Empleado General',
+        ]);
+        DB::table('cargo')->insert([
+            'descripcion' => 'Empleado de envío',
+        ]);
+        DB::table('cargo')->insert([
+            'descripcion' => 'Empleado de recibo de efectivo',
         ]);
     }
 }

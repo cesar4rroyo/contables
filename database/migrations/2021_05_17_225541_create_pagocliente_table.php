@@ -22,6 +22,8 @@ class CreatePagoclienteTable extends Migration
             $table->integer('cliente_id')->unsigned()->nullable();
             $table->foreign('cliente_id')->references('id')->on('personal')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

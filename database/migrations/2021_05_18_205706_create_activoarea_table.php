@@ -15,11 +15,14 @@ class CreateActivoareaTable extends Migration
     {
         Schema::create('activoarea', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('estado')->nullable();
             $table->integer('area_id')->unsigned()->nullable();
             $table->foreign('area_id')->references('id')->on('area')->onUpdate('restrict')->onDelete('restrict');
             $table->integer('activo_id')->unsigned()->nullable();
             $table->foreign('activo_id')->references('id')->on('activo')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

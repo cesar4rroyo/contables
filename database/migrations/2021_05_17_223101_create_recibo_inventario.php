@@ -24,6 +24,8 @@ class CreateReciboInventario extends Migration
             $table->integer('envio_id')->unsigned()->nullable();
             $table->foreign('envio_id')->references('id')->on('envio')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

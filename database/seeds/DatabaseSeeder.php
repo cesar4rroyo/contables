@@ -25,6 +25,11 @@ class DatabaseSeeder extends Seeder
             'impuesto',
             'proveedor',
             'producto',
+            'inventario',
+            'asesoria',
+            'carpetaempleado',
+            'activoarea',
+            //'compra'
         ]);
         $this->call(CargoSeeder::class);
         $this->call(AreaSeeder::class);
@@ -39,6 +44,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ImpuestoSeeder::class);
         $this->call(ProveedorSeeder::class);
         $this->call(ProductoSeeder::class);
+        $this->call(InventarioSeeder::class);
+        $this->call(AsesoriaSeeder::class);
+        $this->call(CarpetaEmpleadoSeeder::class);
+        $this->call(ActivoAreaSeeder::class);
+        //$this->call(CompraSeeder::class);
         // $this->call(ProcedimientoSeeder::class);
         //$this->call(RolPersonaSeeder::class);
     }

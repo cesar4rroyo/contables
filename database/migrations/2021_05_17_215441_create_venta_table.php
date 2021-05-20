@@ -23,6 +23,8 @@ class CreateVentaTable extends Migration
             $table->foreign('asesoria_id')->references('id')->on('asesoria')->onUpdate('restrict')->onDelete('restrict');
             $table->foreign('cliente_id')->references('id')->on('personal')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -22,6 +22,8 @@ class CreateTarjetacontrolTable extends Migration
             $table->integer('carpetaempleado_id')->unsigned()->nullable();
             $table->foreign('carpetaempleado_id')->references('id')->on('carpetaempleado')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

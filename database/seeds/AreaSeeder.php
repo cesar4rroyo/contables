@@ -22,7 +22,10 @@ class AreaSeeder extends Seeder
             'descripcion' => 'Area de Compras',
         ]);
         DB::table('area')->insert([
-            'descripcion' => 'Area de Recepción',
+            'descripcion' => 'Area de Almacén',
+        ]);
+        DB::table('area')->insert([
+            'descripcion' => 'Area de Recepcion',
         ]);
         DB::table('area')->insert([
             'descripcion' => 'Area de Nóminas',

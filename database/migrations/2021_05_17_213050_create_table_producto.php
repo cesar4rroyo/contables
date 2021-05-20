@@ -20,6 +20,8 @@ class CreateTableProducto extends Migration
             $table->string('descripcion')->nullable();
             $table->string('marca')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

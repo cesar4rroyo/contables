@@ -21,6 +21,8 @@ class CreateDescuentoTable extends Migration
             $table->foreign('cliente_id')->references('id')->on('personal')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('producto_id')->references('id')->on('producto')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

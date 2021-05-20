@@ -21,6 +21,8 @@ class CreateAsesoriaTable extends Migration
             $table->foreign('cliente_id')->references('id')->on('personal')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('empleado_id')->references('id')->on('personal')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

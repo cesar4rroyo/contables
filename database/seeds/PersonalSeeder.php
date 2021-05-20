@@ -54,9 +54,9 @@ class PersonalSeeder extends Seeder
             'dni' => '71482136',
             'telefono' => '924734626',
             'email' => 'carroyot@unprg.edu.pe',
-            'area_id'=>1,
+            'area_id'=>3,
             'direccion'=>'AV. ANTENOR ORREGO MZ.B LT. 10 - LA VICTORIA',
-            'cargo_id'=>1
+            'cargo_id'=>4
         ]);
 
         DB::table('personal')->insert([

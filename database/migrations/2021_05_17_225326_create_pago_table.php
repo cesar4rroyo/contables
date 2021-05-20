@@ -25,6 +25,8 @@ class CreatePagoTable extends Migration
             $table->integer('comprobante_id')->unsigned()->nullable();
             $table->foreign('comprobante_id')->references('id')->on('comprobante')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

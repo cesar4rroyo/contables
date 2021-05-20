@@ -24,6 +24,7 @@ class CreateNominaTable extends Migration
             $table->foreign('impuesto_id')->references('id')->on('impuesto')->onUpdate('restrict')->onDelete('restrict');
             $table->integer('carpetaempleado_id')->unsigned()->nullable();
             $table->foreign('carpetaempleado_id')->references('id')->on('carpetaempleado')->onUpdate('restrict')->onDelete('restrict');
+            $table->softDeletes();
 
 
             $table->timestamps();

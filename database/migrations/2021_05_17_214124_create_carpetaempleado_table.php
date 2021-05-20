@@ -19,6 +19,8 @@ class CreateCarpetaempleadoTable extends Migration
             $table->integer('empleado_id')->unsigned()->nullable();
             $table->foreign('empleado_id')->references('id')->on('personal')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

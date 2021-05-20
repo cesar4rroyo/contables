@@ -22,6 +22,8 @@ class CreateTableProveedor extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion', 200)->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

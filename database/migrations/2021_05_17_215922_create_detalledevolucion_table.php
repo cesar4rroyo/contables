@@ -23,6 +23,8 @@ class CreateDetalledevolucionTable extends Migration
             $table->integer('producto_id')->unsigned()->nullable();
             $table->foreign('producto_id')->references('id')->on('producto')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -33,6 +33,8 @@ class CreateSeguimientoTable extends Migration
             $table->integer('area_id')->unsigned()->nullable();
             $table->foreign('area_id')->references('id')->on('area')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -62,7 +62,7 @@ class Personal extends Model
         return $this->apellidopaterno . ' ' . $this->apellidomaterno . ' ' . $this->nombres;
     }
 
-    public function scopelistar($query, $nombre, $dni = null, $area_id = null, $cargo_id = null, $rol=null)
+    public function scopelistar($query, $nombre, $dni, $area_id, $cargo_id)
     {
         return $query->where(function ($subquery) use ($nombre) {
             if (!is_null($nombre)) {
@@ -84,11 +84,6 @@ class Personal extends Model
                     $subquery->where('cargo_id', '=', $cargo_id);
                 }
             })
-            ->wherehas('roles', function($q2) use ($rol){
-                if (!is_null($rol)) {
-                    $q2->where('rol_id', '=', $rol);
-                }
-            })
-            ->orderBy('apellidopaterno', 'ASC');        
+            ->orderBy('id', 'ASC');        
     }
 }

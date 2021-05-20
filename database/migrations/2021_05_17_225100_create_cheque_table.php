@@ -29,6 +29,8 @@ class CreateChequeTable extends Migration
             $table->integer('nomina_id')->unsigned()->nullable();
             $table->foreign('nomina_id')->references('id')->on('nomina')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
