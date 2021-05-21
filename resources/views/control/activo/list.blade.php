@@ -19,15 +19,15 @@
 			<td>{{ $contador }}</td>
 			<td>{{ $value->numero }}</td>
 			<td>{{ $value->fechasolicitud }}</td>
-			<td>{{ $value->fechaesperada }}</td>
+			<td>{{ $value->area->descripcion }}</td>
 			<td>{{ $value->fechaentrega }}</td>
 			<td>{{ $value->estado }}</td>
 			<td>{{ $value->proveedor->razonsocial }}</td>
 			<td>{{ $value->total }}</td>
 			@if (session()->get('personal')['area_id']==5)
 			@endif
-			<td>{!! Form::button('<div class="fas fa-check-double"></div> Recepcionar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'recepcionar')).'\', \''.'Recepcionar Pedido'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
-			<td>{!! Form::button('<div class="fas fa-money-bill"></div> Pagar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pagar')).'\', \''.'Establecer Pago'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
+			<td>{!! Form::button('<div class="fas fa-check-double"></div> Recibir Activo', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'recepcionar')).'\', \''.'Recepción y Verificación de compra de activos'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
+			<td>{!! Form::button('<div class="fas fa-money-bill"></div> Desembolsar Efectivo', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pagar')).'\', \''.'Desembolso de Efectivo'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
             {{-- <td>{!! Form::button('<div class="fas fa-trash-alt"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td> --}}
 		</tr>
 		<?php

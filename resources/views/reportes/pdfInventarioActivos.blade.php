@@ -36,14 +36,13 @@
     <table>
         <thead>
         <tr>
-            <th colspan="5" style="text-align: center"><b>REPORTE {{$tipo}} - LAMBAYEQUE TECHNOLOGIES </b></th>
+            <th colspan="4" style="text-align: center"><b>REPORTE {{$tipo}} - LAMBAYEQUE TECHNOLOGIES </b></th>
         </tr>
         <tr>
             <th><b>CODIGO</b></th>
             <th><b>NOMBRE</b></th>
             <th><b>MARCA</b></th>
             <th><b>CANTIDAD</b></th>
-            <th><b>PRECIO UNITARIO</b></th>
         </tr>
         </thead>
         <tbody>
@@ -62,7 +61,6 @@
                     }
                 @endphp
                 <td class="padding-left">{{ $cantidad  }}</td>
-                <td class="padding-left">{{ $value->preciounitario }}</td>
             </tr>
         @endforeach
         </tbody>

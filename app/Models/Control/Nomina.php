@@ -27,4 +27,19 @@ class Nomina extends Model
         return $this->belongsTo(Carpetaempleado::class, 'carpetaempleado_id');
     }
   
+    public function scopelistar($query, $numero, $fecinicio, $fecfin)
+	{
+		return $query
+			->where(function ($subquery) use ($fecinicio) {
+				if (!is_null($fecinicio) && strlen($fecinicio) > 0) {
+					$subquery->where('fecha', '>=', date_format(date_create($fecinicio), 'Y-m-d H:i:s'));
+				}
+			})
+			->where(function ($subquery) use ($fecfin) {
+				if (!is_null($fecfin) && strlen($fecfin) > 0) {
+					$subquery->where('fecha', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
+				}
+			})
+			->orderBy('created_at', 'DESC');
+	}
 }

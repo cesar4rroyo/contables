@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">COMPRAS</div>
+                <div class="card-header">NOMINAS</div>
                 
                 <div class="card-body">
                     <div class="row">
@@ -12,9 +12,9 @@
                         {!! Form::hidden('accion', 'listar', array('id' => 'accion')) !!}
                         
                         <div class="row w-100">
-							<div class="col-lg-4 col-md-4  form-group">
-								{!! Form::label('numero_search', 'Numero') !!}
-								{!! Form::text('numero_search', '', array('class' => 'form-control ', 'id' => 'numero_search')) !!}
+							<div class="col-lg-4 col-md-4  form-group d-none">
+								{!! Form::label('numero_search', 'Empleado') !!}
+								{!! Form::hidden('numero_search', '', array('class' => 'form-control ', 'id' => 'numero_search')) !!}
 							</div>
 							<div class="col-lg-4 col-md-4  form-group">
 								{!! Form::label('fechainicio', 'Fecha inicio') !!}

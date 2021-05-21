@@ -10,7 +10,10 @@ use App\Models\Admin\Rol;
 use App\Models\Control\Area;
 use Illuminate\Support\Facades\DB;
 use App\Librerias\Libreria;
+use App\Models\Control\Carpetaempleado;
+use App\Models\Control\Tarjetacontrol;
 use Http\Adapter\Guzzle6\Client;
+use Svg\Tag\Rect;
 
 class PersonalController extends Controller
 {
@@ -330,6 +333,21 @@ class PersonalController extends Controller
             $respuesta = json_decode($response_data);
         }
         return json_encode($respuesta);
+    }
+
+    public function getInfo(Request $request){
+        $value=$request->id;
+        $salario=Carpetaempleado::where('empleado_id', $value)->first()->salario;
+        $data=Tarjetacontrol::where('empleado_id', $value)->get()->toArray();
+        $horas=0;
+        foreach ($data as $value) {
+            $horas+=$value['horastrabajadas'];
+        }
+        $data=[
+            'salario'=>$salario,
+            'horas'=>$horas
+        ];
+        return $data;
     }
 
 

@@ -22,7 +22,7 @@ class Activo extends Model
         return $this->hasMany(Inventario::class, 'activo_id');
         
     }
-    public function area(){
-        return $this->belongsTo(Area::class, 'area_id');
+    public function activoarea(){
+        return $this->belongsToMany(Area::class, 'activoarea', 'activo_id');
     }
 }

@@ -14,7 +14,7 @@
                         
                         <div class="col-lg-12 col-md-12  form-group">
                             {!! Form::label('tipo', 'TIPO') !!}
-                            {!! Form::select('tipo', $tipos , '' ,array('class' => 'form-control  input-xs', 'id' => 'tipo')) !!}
+                            {!! Form::select('tipo', $tipos , '' ,array('class' => 'form-control  input-xs', 'id' => 'tipo', 'required'=>'true')) !!}
                         </div>
                           <div class="col-lg-12 col-md-12 form-group text-center pt-4">
                             {!! Form::button('GENERAR REPORTE <i class="fa fa-file ml-2"></i> ', array('class' => 'btn btn-primary   ', 'id' => 'btnDetalle', 'onclick' => 'imprimirpdf();' ,'style'=>'width:60%;')) !!}   

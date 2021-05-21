@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     Route::get('persona/perfil', 'Admin\UsuarioController@perfil')->name('usuario.perfil');
     Route::post('persona/password/{id}', 'Admin\UsuarioController@cambiarpassword')->name('usuario.cambiarpassword');
     Route::post('persona/buscarRUC', 'Admin\PersonalController@buscarRUC')->name('persona.buscarRUC');
+    Route::post('persona/getdata', 'Admin\PersonalController@getInfo')->name('empleado.getInfo');
 
     /* Rutas de PERSONA */
     Route::post('persona/buscar', 'Admin\PersonalController@buscar')->name('persona.buscar');
@@ -71,10 +72,19 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     Route::post('compra/buscar', 'Control\ComprasController@buscar')->name('compra.buscar');
     Route::get('compra/eliminar/{id}/{listarluego}', 'Control\ComprasController@eliminar')->name('compra.eliminar');
     Route::resource('compra', 'Control\ComprasController', array('except' => array('show')));
+    Route::post('compra/generarNumero', 'Control\ComprasController@generarNumero')->name('compra.generarnumero');
+    Route::post('compraactivos/buscar', 'Control\ActivosController@buscar')->name('compraactivos.buscar');
+    Route::get('compraactivos/eliminar/{id}/{listarluego}', 'Control\ActivosController@eliminar')->name('compraactivos.eliminar');
+    Route::post('compraactivos/generarNumero', 'Control\ActivosController@generarNumero')->name('compraactivos.generarnumero');
+
+    Route::resource('compraactivos', 'Control\ActivosController', array('except' => array('show')));
     Route::post('asesoria/buscar', 'Control\AsesoriaController@buscar')->name('asesoria.buscar');
     Route::get('asesoria/eliminar/{id}/{listarluego}', 'Control\AsesoriaController@eliminar')->name('asesoria.eliminar');
     Route::resource('asesoria', 'Control\AsesoriaController', array('except' => array('show')));
 
+    Route::post('nomina/buscar', 'Control\NominaController@buscar')->name('nomina.buscar');
+    Route::get('nomina/eliminar/{id}/{listarluego}', 'Control\NominaController@eliminar')->name('nomina.eliminar');
+    Route::resource('nomina', 'Control\NominaController', array('except' => array('show')));
 
     //inspeccion reporte
     Route::resource('reporteinventario', 'Reportes\ReporteInventarioController', array('except' => array('show')));

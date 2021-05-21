@@ -3,6 +3,7 @@
 use App\Models\Admin\Area;
 use App\Models\Admin\Cargo;
 use App\Models\Admin\TipoUsuario;
+use App\Models\Control\Tarjetacontrol;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'asesoria',
             'carpetaempleado',
             'activoarea',
+            'tarjetacontrol',
             //'compra'
         ]);
         $this->call(CargoSeeder::class);
@@ -48,6 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AsesoriaSeeder::class);
         $this->call(CarpetaEmpleadoSeeder::class);
         $this->call(ActivoAreaSeeder::class);
+        $this->call(Tarjetacontrol::class);
         //$this->call(CompraSeeder::class);
         // $this->call(ProcedimientoSeeder::class);
         //$this->call(RolPersonaSeeder::class);

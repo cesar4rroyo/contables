@@ -6,16 +6,10 @@
 		@case('recepcionar')
 			<input type="hidden" name="tipo" value="recepcionar">
 			<div class="row">
-				<div class="col-4 form-group">
+				<div class="col-sm form-group">
 					{!! Form::label('fechasolicitud', 'Fecha de Solicitud*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						{!! Form::date('fechasolicitud', ($compra) ? date_create($compra->fechasolicitud) : date('Y-m-d'), array('class' => 'form-control  input-xs', 'id' => 'fechasolicitud', 'readonly'=>'true')) !!}
-					</div>
-				</div>
-				<div class="col-4 form-group">
-					{!! Form::label('fechaesperada', 'Fecha Posible de Llegada*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						{!! Form::date('fechaesperada', ($compra) ? date_create($compra->fechaesperada) : null, array('class' => 'form-control  input-xs', 'id' => 'fechaesperada', 'readonly'=>'true')) !!}
 					</div>
 				</div>
 				<div class="col-4 form-group">
@@ -23,6 +17,25 @@
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						{!! Form::date('fechaentrega', date('Y-m-d'), array('class' => 'form-control  input-xs', 'id' => 'fechaentrega')) !!}
 					</div>
+				</div>
+				<div class="col-sm form-group">
+					{!! Form::label('area', 'Area Usuaria*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label', 'id'=>'lblnrodocumento')) !!}
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						{!! Form::text('area', session()->get('personal')['area']['descripcion'], array('class' => 'form-control  input-xs', 'id' => 'area', 'readonly'=>'true')) !!}
+					</div>
+					<input type="hidden" name="area_id" value="{{session()->get('personal')['area']['id']}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm">
+					{!! Form::label('facturafile', 'Digitalizar Factura', array('class' => 'control-label')) !!}
+					<input type="file" id="facturafile" class="form-control">
+				</div>
+				<div class="col-sm form-group">
+						{!! Form::label('factura', 'Factura Nro. *', array('class' => 'control-label')) !!}
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									{!! Form::text('factura', null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'factura',  'autocomplete' =>'off')) !!}
+								</div>
 				</div>
 			</div>
 			<div class="row">
@@ -58,6 +71,7 @@
 						<option value="CONFORME">Conforme</option>
 						<option value="FALTA">Faltan productos</option>
 						<option value="DANO">Productos dañados</option>
+						<option value="ERROR">Error de factura</option>
 					</select>
 				</div>
 			</div>
@@ -74,7 +88,7 @@
 				</div>
 			</div>
 			<div class="col-4 form-group">
-				{!! Form::label('fechaessperada', 'Fecha Posible de Llegada*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
+				{!! Form::label('fechaesperada', 'Fecha Posible de Llegada*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					{!! Form::date('fechaesperada', ($compra) ? date_create($compra->fechaesperada) : null, array('class' => 'form-control  input-xs', 'id' => 'fechaesperada', 'readonly'=>'true')) !!}
 				</div>
@@ -87,12 +101,6 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm form-group">
-				{!! Form::label('facturafile', 'Digitalizar Factura', array('class' => 'control-label')) !!}
-				<div class="col-sm-12 col-md-12 col-lg-12">
-					<input type="file" id="facturafile" class="form-control form-control-sm input-xs">
-				</div>
-			</div>
 			<div class="form-group col-sm">
 				{!! Form::label('factura', 'Factura Nro. *', array('class' => 'control-label')) !!}
 						<div class="col-lg-12 col-md-12 col-sm-12">
@@ -106,42 +114,6 @@
 						</div>
 			</div>
 
-		</div>
-		<p class=" font-weight-bold">Datos del Cheque de Pago</p>
-			<hr>
-		<div class="row">
-			<div class="col-sm form-group">
-				{!! Form::label('fecha', 'Fecha*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::date('fecha',null, array('class' => 'form-control  input-xs', 'id' => 'fecha')) !!}
-				</div>
-			</div>
-			<div class="form-group col-sm">
-				{!! Form::label('destinatario', 'Destinatario*', array('class' => 'control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('destinatario', $compra->proveedor->razonsocial,array('class' => 'form-control form-control-sm input-xs', 'id' => 'destinatario',  'autocomplete' =>'off')) !!}
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-sm">
-				{!! Form::label('cuenta', 'Cuenta*', array('class' => 'control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('cuenta', null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'cuenta',  'autocomplete' =>'off')) !!}
-				</div>
-			</div>
-			<div class="form-group col-sm">
-				{!! Form::label('banco', 'Banco*', array('class' => 'control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('banco', null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'banco',  'autocomplete' =>'off')) !!}
-				</div>
-			</div>
-			<div class="form-group col-sm">
-				{!! Form::label('monto', 'Monto*', array('class' => 'control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('monto', $compra->total,array('class' => 'form-control form-control-sm input-xs', 'id' => 'monto',  'autocomplete' =>'off')) !!}
-				</div>
-			</div>
 		</div>
 		<div class="row">
 			<div class="px-3">
@@ -182,23 +154,24 @@
 			@break
 		@case(null)
 		<div class="row">
-			<div class="col-4 form-group">
+			<div class="col-sm form-group">
 				{!! Form::label('fechasolicitud', 'Fecha de Solicitud*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					{!! Form::date('fechasolicitud', ($compra) ? date_create($compra->fechasolicitud) : date('Y-m-d'), array('class' => 'form-control  input-xs', 'id' => 'fechasolicitud')) !!}
 				</div>
 			</div>
-			<div class="col-4 form-group">
-				{!! Form::label('fechaesperada', 'Fecha Posible de Llegada*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label')) !!}
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::date('fechaesperada', ($compra) ? date_create($compra->fechaesperada) : null, array('class' => 'form-control  input-xs', 'id' => 'fechaesperada')) !!}
-				</div>
-			</div>
-			<div class="col-4 form-group">
+			<div class="col-sm form-group">
 				{!! Form::label('numero', 'Pedido de Compra Número*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label', 'id'=>'lblnrodocumento')) !!}
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					{!! Form::text('numero', null, array('class' => 'form-control  input-xs', 'id' => 'numero', 'readonly'=>'true')) !!}
 				</div>
+			</div>
+			<div class="col-sm form-group">
+				{!! Form::label('area', 'Area Usuaria*', array('class' => 'col-lg-12 col-md-12 col-sm-12 control-label', 'id'=>'lblnrodocumento')) !!}
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					{!! Form::text('area', session()->get('personal')['area']['descripcion'], array('class' => 'form-control  input-xs', 'id' => 'area', 'readonly'=>'true')) !!}
+				</div>
+				<input type="hidden" name="area_id" value="{{session()->get('personal')['area']['id']}}">
 			</div>
 		</div>
 		<div class="form-group">
@@ -213,7 +186,7 @@
 						<legend>Detalle de la compra</legend>
 						<div class="form-group">
 							<div class="col-lg-12 col-md-12 col-sm-12">
-								{!! Form::select('productos_id', $productos , '', array('class' => 'form-control input-xs', 'id' => 'productos_id')) !!}
+								{!! Form::select('productos_id', $activos , '', array('class' => 'form-control input-xs', 'id' => 'productos_id')) !!}
 							</div>
 						</div>
 						<thead>
@@ -252,8 +225,8 @@ $(document).ready(function() {
 	configurarAnchoModal('900');
 	init(IDFORMMANTENIMIENTO+'{!! $entidad !!}', 'M', '{!! $entidad !!}');
 	$('#productos_id').select2();
-	generarNumero();
 	$('#areafin_id').select2();
+	generarNumero();
 	$("select[name=productos_id]").change(function(){
 		var idarea = $(this).val();
 		if(idarea == "" || !idarea) {
@@ -298,11 +271,10 @@ var carro_areas = new Array();
 			guardar(entidad, boton);
 		}
 	}
-
 	function generarNumero(){
 		$.ajax({
 			type: "POST",
-			url: "{{route('compra.generarnumero')}}",
+			url: "{{route('compraactivos.generarnumero')}}",
 			data: "_token="+$(IDFORMMANTENIMIENTO + '{!! $entidad !!} :input[name="_token"]').val(),
 			success: function(a) {
 				$(IDFORMMANTENIMIENTO + '{!! $entidad !!} :input[name="numero"]').val(a);
@@ -314,7 +286,7 @@ var carro_areas = new Array();
 @if(!is_null($compra))
 	@foreach ($compra->detallecompra as $detalle)
 		<script>
-			seleccionarArea('{{$detalle->id}}' , '{{$detalle->producto->descripcion}}' , '{{$detalle->cantidad}}', '{{$detalle->preciocompra}}');
+			seleccionarArea('{{$detalle->id}}' , '{{$detalle->activo->descripcion}}' , '{{$detalle->cantidad}}', '{{$detalle->preciocompra}}');
 		</script>		
 	@endforeach
 @endif
