@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Admin\OpcionMenu;
 use Carbon\Carbon;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (env('REDIRECT_HTTPS')) {
+            $this->app['request']->server->set('HTTPS', true);
+        }
     }
 
     /**
@@ -23,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
         view()->composer('theme.lte.aside', function ($view) {
             $opciones = OpcionMenu::getMenu();
@@ -32,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
         view()->share('theme', 'lte');
 
         Carbon::setLocale(config('app.locale'));
+
+        if (env('REDIRECT_HTTPS')) {
+            $url->formatScheme('https://');
+        }
         
     }
 }
