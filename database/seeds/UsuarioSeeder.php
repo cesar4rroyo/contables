@@ -18,6 +18,12 @@ class UsuarioSeeder extends Seeder
             'tipousuario_id' => 1,
             'personal_id'=>5,
         ]);
+        DB::table('usuario')->insert([
+            'login' => 'danielito',
+            'password' => bcrypt('danielito'),
+            'tipousuario_id' => 2,
+            'personal_id'=>13,
+        ]);
         // DB::table('usuario')->insert([
         //     'login' => 'area1',
         //     'password' => bcrypt('area1'),
