@@ -20,7 +20,7 @@ class Detalleventa extends Model
     public function producto(){
         return $this->belongsTo(Producto::class, 'producto_id');
     }
-    public function descuento(){
+    public function descuentos(){
         return $this->belongsTo(Descuento::class, 'descuento_id');
     }
 

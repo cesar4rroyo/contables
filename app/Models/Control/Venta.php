@@ -34,6 +34,9 @@ class Venta extends Model
     public function cliente(){
         return $this->belongsTo(Personal::class, 'cliente_id');
     }
+    public function comprobante(){
+        return $this->hasOne(Comprobante::class, 'venta_id');
+    }
     public function scopelistar($query, $numero, $fecinicio, $fecfin)
 	{
 		return $query

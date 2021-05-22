@@ -15,7 +15,7 @@ class CreateDetallecomprobanteTable extends Migration
     {
         Schema::create('detallecomprobante', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('precicompra', 8,2)->nullable();
+            $table->decimal('preciocompra', 8,2)->nullable();
             $table->decimal('precioventa', 8,2)->nullable();
             $table->integer('cantidad')->nullable();
             $table->integer('producto_id')->unsigned()->nullable();

@@ -18,11 +18,25 @@
 		@foreach ($lista as $key => $value)
         <tr>
 			<td>{{ $contador }}</td>
-			<td>{{ $value->fecha }}</td>
+			<td>{{ $value->numero }}</td>
+			<td>{{ $value->fecharegistro }}</td>
+			<td>{{ $value->fechaenvio }}</td>
+			<td>{{ $value->estado }}</td>
 			<td>{{ $value->cliente->razonsocial }}</td>
-			<td>{{ $value->empleado->nombres . ' ' . $value->empleado->apellidopaterno . ' ' . $value->empleado->apellidomaterno }}</td>
-            <td>{!! Form::button('<div class="glyphicon glyphicon-pencil"></div> Editar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI')).'\', \''.$titulo_modificar.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
-            <td>{!! Form::button('<div class="glyphicon glyphicon-remove"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td>
+			<td>{{ $value->total }}</td>
+            <td>
+				{!! Form::button('<div class="fas fa-truck-moving"></div> Enviar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'enviar')).'\', \''.'Envio de pedido'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}
+				{{-- {!! Form::button('<div class="glyphicon glyphicon-remove"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!} --}}
+			</td>
+			<td>
+				{!! Form::button('<div class="fas fa-money-bill"></div> Pago', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pago')).'\', \''.'Documentacion de pago'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}
+			</td>
+			@if ($value->estado == 'ENVIADO')
+			<td>
+				<td>{!! Form::button('<div class="fas fa-print"></div> Factura', array('onclick' =>'pdf(\''.$value->comprobante->id.'\')', 'class' => 'btn btn-sm btn-success')) !!}</td>
+			</td>
+			@endif
+			
 		</tr>
 		<?php
 		$contador = $contador + 1;
@@ -39,3 +53,8 @@
 </table>
 {!! $paginacion!!}
 @endif
+<script>
+	function pdf(id){
+		window.open( 'venta/exportPdf/'+id , '_blank');
+	}
+</script>

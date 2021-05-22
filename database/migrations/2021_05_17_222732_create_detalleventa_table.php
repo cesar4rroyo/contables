@@ -17,6 +17,7 @@ class CreateDetalleventaTable extends Migration
             $table->increments('id');
             $table->integer('cantidad')->nullable();
             $table->decimal('precioventa', 8,2);
+            $table->decimal('descuento', 8,2)->nullable();
             $table->integer('venta_id')->unsigned()->nullable();
             $table->foreign('venta_id')->references('id')->on('venta')->onUpdate('restrict')->onDelete('restrict');
             $table->integer('producto_id')->unsigned()->nullable();

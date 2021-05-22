@@ -91,8 +91,9 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     Route::get('venta/eliminar/{id}/{listarluego}', 'Control\VentaController@eliminar')->name('venta.eliminar');
     Route::resource('venta', 'Control\VentaController', array('except' => array('show')));
     Route::post('venta/generarNumero', 'Control\VentaController@generarNumero')->name('venta.generarnumero');
+    Route::post('venta/generarfacturas', 'Control\VentaController@generarfacturas')->name('venta.generarfacturas');
     Route::post('venta/getProducto', 'Control\VentaController@getProducto')->name('venta.getProducto');
-
+    Route::get('venta/exportPdf/{id}', 'Control\VentaController@exportPdf')->name('venta.exportPdf');
 
     //inspeccion reporte
     Route::resource('reporteinventario', 'Reportes\ReporteInventarioController', array('except' => array('show')));

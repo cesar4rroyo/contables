@@ -262,4 +262,26 @@ class AsesoriaController extends Controller
             return  \json_encode($data);
         }
     }
+
+    public function generarNumero(Request $request)
+    {
+        $año           = date('Y');
+        $comprobante = Asesoria::latest('id')->first();
+        if (!is_null($comprobante)) {
+            $comprobante->get()->toArray();
+            $numero = $comprobante['id'] + 1;
+            $numero = $this->zero_fill($numero, 8);
+            $numero = 'A2021-' . $numero;
+        } else {
+            $numero = $this->zero_fill(1, 8);
+            $numero = 'A2021-' . $numero;
+        }
+        echo $numero;
+    }
+
+    public function zero_fill($valor, $long = 0)
+    {
+        return str_pad($valor, $long, '0', STR_PAD_LEFT);
+    }
+
 }

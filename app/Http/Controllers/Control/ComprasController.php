@@ -340,10 +340,24 @@ class ComprasController extends Controller
         return view('reusable.confirmarEliminar')->with(compact('modelo', 'formData', 'entidad', 'boton', 'listar'));
     }
 
+
     public function generarNumero(Request $request)
     {
         $año           = date('Y');
-        $numerotramite = Compra::NumeroSigue($año);
-        echo 'CPDT-' . $año."-" . $numerotramite;
+        $comprobante = Compra::where('tipo', 'PRODUCTOS')->latest('id')->first();
+        if (!is_null($comprobante)) {
+            $comprobante->get()->toArray();
+            $numero = $comprobante['id'] + 1;
+            $numero = $this->zero_fill($numero, 8);
+            $numero = 'CPROD2021-' . $numero;
+        } else {
+            $numero = $this->zero_fill(1, 8);
+            $numero = 'CPROD2021-' . $numero;
+        }
+        echo $numero;
+    }
+    public function zero_fill($valor, $long = 0)
+    {
+        return str_pad($valor, $long, '0', STR_PAD_LEFT);
     }
 }
