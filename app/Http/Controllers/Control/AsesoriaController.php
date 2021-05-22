@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Librerias\Libreria;
+use App\Models\Admin\Personal;
 use App\Models\Control\Asesoria;
+use App\Models\Control\Detalleasesoria;
+use App\Models\Control\Producto;
 use Http\Adapter\Guzzle6\Client;
 use Validator;
 
@@ -97,11 +100,13 @@ class AsesoriaController extends Controller
         $listar   = Libreria::getParam($request->input('listar'), 'NO');
         $entidad  = 'asesoria';
         $asesoria = null;
-        
+        $productos = ["" => "Seleccione un producto"];
+        $productos += Producto::pluck('descripcion', 'id')->all();
+        $cboClientes = [''=>'Seleccione una opcion'] + Personal::whereNotNull('razonsocial')->pluck('razonsocial', 'id')->all();
         $formData = array('asesoria.store');
         $formData = array('route' => $formData, 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton    = 'Registrar'; 
-        return view($this->folderview.'.mant')->with(compact('asesoria', 'formData', 'entidad', 'boton', 'listar'));
+        return view($this->folderview.'.mant')->with(compact('asesoria', 'formData', 'entidad', 'boton', 'listar', 'cboClientes', 'productos'));
     }
 
     /**
@@ -113,9 +118,9 @@ class AsesoriaController extends Controller
     public function store(Request $request)
     {
         $listar     = Libreria::getParam($request->input('listar'), 'NO');
-        $reglas     = array('descripcion' => 'required');
+        $reglas     = array('fecha' => 'required');
         $mensajes = array(
-            'descripcion.required'         => 'Debe ingresar una descripción'
+            'fecha.required'         => 'Debe ingresar una fecha'
             );
             
         $validacion = Validator::make($request->all(), $reglas, $mensajes);
@@ -123,10 +128,19 @@ class AsesoriaController extends Controller
             return $validacion->messages()->toJson();
         }
         $error = DB::transaction(function() use($request){
+            $array_areas = \json_decode($request->input('listarProductos') , true);
             $asesoria = new Asesoria();
-            $asesoria->descripcion= strtoupper($request->input('descripcion'));
-            $asesoria->mesadepartes= $request->input('mesadepartes')?true:false;
+            $asesoria->fecha= $request->input('fecha');
+            $asesoria->cliente_id= $request->cliente;
+            $asesoria->empleado_id= 2;
+            //$asesoria->limite= $request->input('limite');
             $asesoria->save();
+            for ($i=0; $i < count($array_areas) ; $i++) { 
+                $detalle                    = new Detalleasesoria();
+                $detalle->producto_id    = $array_areas[$i]["idarea"];
+                $detalle->asesoria_id = $asesoria->id;
+                $detalle->save();
+            }
         });
 
         return is_null($error) ? "OK" : $error;
@@ -155,13 +169,16 @@ class AsesoriaController extends Controller
         if ($existe !== true) {
             return $existe;
         }
+        $cboClientes = [''=>'Seleccione una opcion'] + Personal::whereNotNull('razonsocial')->pluck('razonsocial', 'id')->all();
+        $productos = ["" => "Seleccione un producto"];
+        $productos += Producto::pluck('descripcion', 'id')->all();
         $listar   = Libreria::getParam($request->input('listar'), 'NO');
         $asesoria = Asesoria::find($id);
         $entidad  = 'asesoria';
         $formData = array('asesoria.update', $id);
         $formData = array('route' => $formData, 'method' => 'PUT', 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton    = 'Modificar';
-        return view($this->folderview.'.mant')->with(compact('asesoria', 'formData', 'entidad', 'boton', 'listar'));
+        return view($this->folderview.'.mant')->with(compact('asesoria', 'formData', 'entidad', 'boton', 'listar', 'cboClientes', 'productos'));
     }
 
     /**
@@ -229,5 +246,20 @@ class AsesoriaController extends Controller
         $formData = array('route' => array('asesoria.destroy', $id), 'method' => 'DELETE', 'class' => 'form-horizontal', 'id' => 'formMantenimiento'.$entidad, 'autocomplete' => 'off');
         $boton    = 'Eliminar';
         return view('reusable.confirmarEliminar')->with(compact('modelo', 'formData', 'entidad', 'boton', 'listar'));
+    }
+    public function listarAsesoria(Request $request){
+        $q = $request->input('search');
+        $tipo = $request->input('tipo');
+        if($tipo!='no'){
+            $resultados = Asesoria::where(function($query) use($q, $tipo){
+                $query->where('fecha','LIKE', '%'.$q.'%')
+                    ->where('id', 'LIKE', '%'.$tipo.'%');
+            })->get();
+            $data = array();
+            foreach ($resultados as $r) {
+                $data["results"][] = [ "text" => $r->fecha,"id" => $r->id];
+            }
+            return  \json_encode($data);
+        }
     }
 }

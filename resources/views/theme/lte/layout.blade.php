@@ -68,5 +68,7 @@
 
 
 </body>
+@include("theme/$theme/footer")
+
 
 </html>

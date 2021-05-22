@@ -21,4 +21,8 @@ class Asesoria extends Model
     public function empleado(){
         return $this->belongsTo(Personal::class, 'empleado_id');
     }
+    public function detalleasesoria()
+    {
+        return $this->hasMany(Detalleasesoria::class, 'asesoria_id');
+    }
 }

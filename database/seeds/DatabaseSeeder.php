@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AsesoriaSeeder::class);
         $this->call(CarpetaEmpleadoSeeder::class);
         $this->call(ActivoAreaSeeder::class);
-        $this->call(Tarjetacontrol::class);
+        $this->call(TarjetaControlSeeder::class);
         //$this->call(CompraSeeder::class);
         // $this->call(ProcedimientoSeeder::class);
         //$this->call(RolPersonaSeeder::class);

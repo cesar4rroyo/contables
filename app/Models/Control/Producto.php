@@ -29,4 +29,8 @@ class Producto extends Model
     public function detallecomprobante(){
         return $this->hasMany(Detallecomprobante::class, 'producto_id');
     }
+    public function asesoria()
+    {
+        return $this->belongsToMany(Asesoria::class, 'detalleasesoria');
+    }
 }

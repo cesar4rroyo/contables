@@ -25,8 +25,8 @@
 					{!! Form::label('estadoenvio', 'Estado ', array('class' => 'control-label')) !!}
 					<select name="estadoenvio" id="estadoenvio" class="form-control">
 						<option value="">Seleccione</option>
-						<option value="AUTORIZAR">Conforme</option>
-						<option value="RECHAZAR">Faltan productos</option>
+						<option value="AUTORIZAR">Autorizar</option>
+						<option value="RECHAZAR">Rechazar</option>
 					</select>
 				</div>
 			@break

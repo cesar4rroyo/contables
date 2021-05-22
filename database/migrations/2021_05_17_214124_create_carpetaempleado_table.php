@@ -16,6 +16,8 @@ class CreateCarpetaempleadoTable extends Migration
         Schema::create('carpetaempleado', function (Blueprint $table) {
             $table->increments('id');
             $table->decimal('salario', 8,2);
+            $table->string('cuenta');
+            $table->string('banco');
             $table->integer('empleado_id')->unsigned()->nullable();
             $table->foreign('empleado_id')->references('id')->on('personal')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();

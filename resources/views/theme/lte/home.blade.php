@@ -9,4 +9,3 @@
       <!-- /.content-header -->
   
 </div>
-@include("theme/$theme/footer")

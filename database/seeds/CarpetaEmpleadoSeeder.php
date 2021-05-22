@@ -14,6 +14,8 @@ class CarpetaEmpleadoSeeder extends Seeder
             DB::table('carpetaempleado')->insert([
                 'salario' => rand(400,1500),
                 'empleado_id' => $i,
+                'cuenta'=>"305-33178528-0-8".$i,
+                'banco'=>'BCP',
             ]);
         }
     }

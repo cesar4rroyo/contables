@@ -81,10 +81,18 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     Route::post('asesoria/buscar', 'Control\AsesoriaController@buscar')->name('asesoria.buscar');
     Route::get('asesoria/eliminar/{id}/{listarluego}', 'Control\AsesoriaController@eliminar')->name('asesoria.eliminar');
     Route::resource('asesoria', 'Control\AsesoriaController', array('except' => array('show')));
+    Route::get('asesoria/listarAsesoria', 'Control\AsesoriaController@listarAsesoria')->name('asesoria.listarAsesoria');
 
     Route::post('nomina/buscar', 'Control\NominaController@buscar')->name('nomina.buscar');
     Route::get('nomina/eliminar/{id}/{listarluego}', 'Control\NominaController@eliminar')->name('nomina.eliminar');
     Route::resource('nomina', 'Control\NominaController', array('except' => array('show')));
+
+    Route::post('venta/buscar', 'Control\VentaController@buscar')->name('venta.buscar');
+    Route::get('venta/eliminar/{id}/{listarluego}', 'Control\VentaController@eliminar')->name('venta.eliminar');
+    Route::resource('venta', 'Control\VentaController', array('except' => array('show')));
+    Route::post('venta/generarNumero', 'Control\VentaController@generarNumero')->name('venta.generarnumero');
+    Route::post('venta/getProducto', 'Control\VentaController@getProducto')->name('venta.getProducto');
+
 
     //inspeccion reporte
     Route::resource('reporteinventario', 'Reportes\ReporteInventarioController', array('except' => array('show')));

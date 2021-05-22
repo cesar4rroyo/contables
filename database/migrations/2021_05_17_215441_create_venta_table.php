@@ -15,9 +15,13 @@ class CreateVentaTable extends Migration
     {
         Schema::create('venta', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('fecha');
+            $table->dateTime('fecharegistro')->nullable();
+            $table->dateTime('fechaenvio')->nullable();
+            $table->dateTime('fechafin')->nullable();
             $table->string('numero')->nullable();
             $table->string('estado')->nullable();
+            $table->string('motivo')->nullable();
+            $table->decimal('total', 8,2)->nullable();
             $table->integer('asesoria_id')->unsigned()->nullable();
             $table->integer('cliente_id')->unsigned()->nullable();
             $table->foreign('asesoria_id')->references('id')->on('asesoria')->onUpdate('restrict')->onDelete('restrict');
