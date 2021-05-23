@@ -133,6 +133,7 @@ class AsesoriaController extends Controller
             $asesoria->fecha= $request->input('fecha');
             $asesoria->cliente_id= $request->cliente;
             $asesoria->empleado_id= 2;
+            $asesoria->credito=$request->credito;
             //$asesoria->limite= $request->input('limite');
             $asesoria->save();
             for ($i=0; $i < count($array_areas) ; $i++) { 

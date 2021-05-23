@@ -22,6 +22,7 @@ use Carbon\Carbon;
 use Validator;
 use Http\Adapter\Guzzle6\Client;
 use Barryvdh\DomPDF\Facade as PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class VentaController extends Controller
 {
@@ -69,7 +70,7 @@ class VentaController extends Controller
         $cabecera[]       = array('valor' => 'Estado', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Cliente', 'numero' => '1');
         $cabecera[]       = array('valor' => 'Total', 'numero' => '1');
-        $cabecera[]       = array('valor' => 'Operaciones', 'numero' => '3');
+        $cabecera[]       = array('valor' => 'Operaciones', 'numero' => '4');
 
         $titulo_modificar = $this->tituloModificar;
         $titulo_eliminar  = $this->tituloEliminar;
@@ -165,7 +166,7 @@ class VentaController extends Controller
             $venta->fecharegistro = $request->fecharegistro;
             $venta->numero = $request->numero;
             $venta->cliente_id = $request->cliente;
-            $venta->asesoria_id=$request->asesoria;
+            $venta->asesoria_id=($request->asesoria) ? $request->asesoria : null;
             $venta->estado='REGISTRADO';
             $venta->total=$total;
             $venta->save();
@@ -310,9 +311,7 @@ class VentaController extends Controller
         if($request->tipo=='pago'){
             $error = DB::transaction(function () use ($request, $id){
                 $venta = Venta::find($id);
-                if($request->estadoenvio=='CONFORME'){
-                    $venta->estado='FINALIZADO';
-                }
+                $venta->estado='FINALIZADO';
                 $venta->save();
                 $pago = new Pago();
                 $pago->fecha=$request->fechapago;
@@ -419,7 +418,8 @@ class VentaController extends Controller
         $base=round($base,2);
         $igv = $base * 0.18;
         $igv= round($igv,2);
-        $pdf = PDF::loadView('control.ventas.factura', compact('data', 'igv', 'base'))->setPaper('a4');
+        $qr = QrCode::format('png')->size(200)->generate($data->numero);
+        $pdf = PDF::loadView('control.ventas.factura', compact('data', 'igv', 'base', 'qr'))->setPaper('a4');
         
 
         return $pdf->stream('factura.pdf');

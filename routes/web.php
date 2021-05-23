@@ -60,6 +60,10 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     Route::post('persona/buscar', 'Admin\PersonalController@buscar')->name('persona.buscar');
     Route::get('persona/eliminar/{id}/{listarluego}', 'Admin\PersonalController@eliminar')->name('persona.eliminar');
     Route::resource('persona', 'Admin\PersonalController', array('except' => array('show')));
+   
+    Route::post('proveedor/buscar', 'Control\ProveedorController@buscar')->name('proveedor.buscar');
+    Route::get('proveedor/eliminar/{id}/{listarluego}', 'Control\ProveedorController@eliminar')->name('proveedor.eliminar');
+    Route::resource('proveedor', 'Control\ProveedorController', array('except' => array('show')));
     /* Rutas de Cargo */
     Route::post('cargo/buscar', 'Admin\CargoController@buscar')->name('cargo.buscar');
     Route::get('cargo/eliminar/{id}/{listarluego}', 'Admin\CargoController@eliminar')->name('cargo.eliminar');
@@ -98,6 +102,21 @@ Route::group(['middleware' => ['auth', 'acceso']], function () {
     //inspeccion reporte
     Route::resource('reporteinventario', 'Reportes\ReporteInventarioController', array('except' => array('show')));
     Route::get('reporteinventario/pdfInventario', 'Reportes\ReporteInventarioController@pdfInventario')->name('reporteinventario.pdfInventario');
+
+    Route::resource('reporteasesoria', 'Control\ReporteAsesoriaController', array('except' => array('show')));
+    Route::get('reporteasesoria/pdfAsesoria', 'Control\ReporteAsesoriaController@pdfAsesoria')->name('reporteasesoria.pdfAsesoria');
+
+    Route::resource('reporteventa', 'Control\ReporteVentaController', array('except' => array('show')));
+    Route::get('reporteventa/pdfVenta', 'Control\ReporteVentaController@pdfVenta')->name('reporteventa.pdfVenta');
+
+    Route::resource('reportecompra', 'Control\ReporteCompraController', array('except' => array('show')));
+    Route::get('reportecompra/pdfCompra', 'Control\ReporteCompraController@pdfCompra')->name('reportecompra.pdfCompra');
+
+    Route::resource('reportenomina', 'Control\ReporteNominaController', array('except' => array('show')));
+    Route::get('reportenomina/pdfNomina', 'Control\ReporteNominaController@pdfNomina')->name('reportenomina.pdfNomina');
+
+    Route::resource('reporteactivo', 'Control\ReporteActivoController', array('except' => array('show')));
+    Route::get('reporteactivo/pdfActivo', 'Control\ReporteActivoController@pdfActivo')->name('reporteactivo.pdfActivo');
    
     /* EMPRESA COURIER*/
     Route::post('empresacourier/buscar', 'Control\EmpresacourierController@buscar')->name('empresacourier.buscar');

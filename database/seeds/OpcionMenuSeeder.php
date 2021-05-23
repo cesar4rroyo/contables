@@ -102,19 +102,61 @@ class OpcionMenuSeeder extends Seeder
 
         //Grupo reportes
         DB::table('opcionmenu')->insert([
-            'descripcion' => 'Reporte de Inventario de Productos',
-            'icono' => 'fas fa-list-ol',
+            'descripcion' => 'Reportes de Inventario',
+            'icono' => 'fas fa-chart-area',
             'link' => 'reporteinventario',
             'orden' => 1,
+            'grupomenu_id' => 5
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reportes de Asesoria',
+            'icono' => 'fas fa-chart-area',
+            'link' => 'reporteasesoria',
+            'orden' => 2,
+            'grupomenu_id' => 5
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reportes de Ventas',
+            'icono' => 'fas fa-chart-area',
+            'link' => 'reporteventa',
+            'orden' => 3,
+            'grupomenu_id' => 5
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reportes de Compras',
+            'icono' => 'fas fa-chart-area',
+            'link' => 'reportecompra',
+            'orden' => 4,
+            'grupomenu_id' => 5
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reportes de Nominas',
+            'icono' => 'fas fa-chart-area',
+            'link' => 'reportenomina',
+            'orden' => 5,
+            'grupomenu_id' => 5
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Reportes Activos Fijos',
+            'icono' => 'fas fa-chart-area',
+            'link' => 'reporteactivo',
+            'orden' => 6,
             'grupomenu_id' => 5
         ]);
 
 
         DB::table('opcionmenu')->insert([
-            'descripcion' => 'Compras',
-            'icono' => 'fas fa-shopping-cart',
+            'descripcion' => 'Productos',
+            'icono' => 'fas fa-truck',
             'link' => 'compra',
             'orden' => 1,
+            'grupomenu_id' => 7
+        ]);
+        DB::table('opcionmenu')->insert([
+            'descripcion' => 'Proveedor',
+            'icono' => 'fas fa-shopping-cart',
+            'link' => 'proveedor',
+            'orden' => 3,
             'grupomenu_id' => 7
         ]);
         DB::table('opcionmenu')->insert([

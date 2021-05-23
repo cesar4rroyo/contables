@@ -52,13 +52,13 @@
 			<div class="form-group col-sm">
 				{!! Form::label('cuenta', 'Cuenta*', array('class' => 'control-label')) !!}
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('cuenta', null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'cuenta',  'autocomplete' =>'off')) !!}
+					{!! Form::text('cuenta', ($nomina) ? $nomina->carpteempleado->cuenta : null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'cuenta',  'autocomplete' =>'off')) !!}
 				</div>
 			</div>
 			<div class="form-group col-sm">
 				{!! Form::label('banco', 'Banco*', array('class' => 'control-label')) !!}
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					{!! Form::text('banco', null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'banco',  'autocomplete' =>'off')) !!}
+					{!! Form::text('banco', ($nomina) ? $nomina->carpteempleado->banco : null,array('class' => 'form-control form-control-sm input-xs', 'id' => 'banco',  'autocomplete' =>'off')) !!}
 				</div>
 			</div>
 			<div class="form-group col-sm">

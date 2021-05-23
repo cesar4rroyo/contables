@@ -16,6 +16,7 @@ class CreateAsesoriaTable extends Migration
         Schema::create('asesoria', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha');
+            $table->decimal('credito', 8,2);
             $table->integer('cliente_id')->unsigned()->nullable();
             $table->integer('empleado_id')->unsigned()->nullable();
             $table->foreign('cliente_id')->references('id')->on('personal')->onDelete('restrict')->onUpdate('restrict');

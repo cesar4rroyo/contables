@@ -27,7 +27,7 @@
 
     <table width="100%">
         <tr>
-            <td valign="top"><img src="{{asset('imagenes/logo.jpeg')}}" alt="" width="150" /></td>
+            <td valign="top"><img src="{{asset('imagenes/2.png')}}" alt="" width="150" /></td>
             <td align="right">
                 <h3>LAMBAYEQUE TECHNOLOGIES S.A.C.</h3>
                 <pre>
@@ -130,7 +130,9 @@
             </td>
         </tr>
     </table>
-
+    <div class="text-center">
+        <img class=" float-right" src="data:image/svg+xml;base64,{{ base64_encode($qr) }}">
+    </div>
 </body>
 
 </html>

@@ -80,6 +80,162 @@ class PersonalSeeder extends Seeder
             'direccion'=>'CALLE INCANATO 464 - JOSÉ LEONARDO ORTIZ',
             'cargo_id'=>1,
         ]);
+
+        DB::table('personal')->insert([
+            'nombres' => 'JORGE ALFREDO',
+            'apellidopaterno' => 'TORRES',
+            'apellidomaterno' => 'ACOSTA',
+            'dni' => '73748713',
+            'telefono' => '933566145',
+            'email'=>'rtorresa@unprg.edu.pe',
+            'direccion'=>'HUAYNA CAPAC 784',
+            'area_id'=>7,
+            'cargo_id'=>4
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'PABLO ',
+            'apellidopaterno' => 'TORRES',
+            'apellidomaterno' => 'ACOSTA',
+            'dni' => '16715354',
+            'telefono' => '933566145',
+            'email'=>'rpablo@unprg.edu.pe',
+            'direccion'=>'INDEPENDECIA 214',
+            'area_id'=>6,
+            'cargo_id'=>7
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'BERNABE',
+            'apellidopaterno' => 'TORRES',
+            'apellidomaterno' => 'ACOSTA',
+            'dni' => '73748314',
+            'telefono' => '933566145',
+            'email'=>'bernabet@unprg.edu.pe',
+            'direccion'=>'CALLE CAPAC YUPANQUI 971 - LA VICTORIA',
+            'area_id'=>9,
+            'cargo_id'=>7
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'ROBERTO',
+            'apellidopaterno' => 'TORRES',
+            'apellidomaterno' => 'ACOSTA',
+            'dni' => '77748713',
+            'telefono' => '933566145',
+            'email'=>'roberto@unprg.edu.pe',
+            'direccion'=>'LOS CHASQUIS 214 - LA VICTORIA',
+            'area_id'=>2,
+            'cargo_id'=>8
+        ]);
+
+        DB::table('personal')->insert([
+            'nombres' => 'DIEGO',
+            'apellidopaterno' => 'VAZQUES',
+            'apellidomaterno' => 'ARAUJO',
+            'dni' => '72845403',
+            'telefono' => '983517083',
+            'email'=>'dvasquezar@unprg.edu.pe',
+            'direccion'=>'AV. INDEPENDENCIA 736 - CHICLAYO',
+            'area_id'=>1,
+            'cargo_id'=>3,
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'LESLIE DEL MILAGRO',
+            'apellidopaterno' => 'ALCALDE',
+            'apellidomaterno' => 'BARRANTES',
+            'dni' => '43681502',
+            'telefono' => '922410364',
+            'email'=>'lesliealcal@gmail.com',
+            'direccion'=>'AV. COLORADO N°142-CHICLAYO',
+            'area_id'=>1,
+            'cargo_id'=>4,
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'CAMILO',
+            'apellidopaterno' => 'TORRES',
+            'apellidomaterno' => 'BAUTISTA',
+            'dni' => '44150978',
+            'telefono' => '944401984',
+            'email'=>'camilotorres@hotmail.com',
+            'direccion'=>'AV. EL ZOORO - EL BOSQUE- LA VICTORIA',
+            'area_id'=>9,
+            'cargo_id'=>2,
+        ]);
+        DB::table('personal')->insert([
+            'nombres' => 'JOSE REYNALDO',
+            'apellidopaterno' => 'ZAFRA',
+            'apellidomaterno' => 'VARGAS',
+            'dni' => '71484638',
+            'telefono' => '934466163',
+            'email'=>'jzafrav@unprg.edu.pe',
+            'direccion'=>'CALLE INCANATO 464 - JLO',
+            'area_id'=>1,
+            'cargo_id'=>4
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'YAMILET',
+            'apellidopaterno' => 'VARGAS',
+            'apellidomaterno' => 'VIDARTE',
+            'dni' => '24336714',
+            'telefono' => '925388210',
+            'email'=>'yvargasv@unprg.edu.pe',
+            'direccion'=>'CALLE MANUEL SEOANE 345 - LA VICTORIA',
+            'area_id'=>1,
+            'cargo_id'=>10
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'OLIVER JHANCARLOS',
+            'apellidopaterno' => 'RAMOS',
+            'apellidomaterno' => 'VASQUEZ',
+            'dni' => '75214273',
+            'telefono' => '973510083',
+            'email'=>'oramosv@unprg.edu.pe',
+            'direccion'=>'CALLE LOS INCAS 512 - LA VICTORIA',
+            'area_id'=>9,
+            'cargo_id'=>2
+        ]);
+
+        DB::table('personal')->insert([
+            'nombres' => 'JHANCARLOS',
+            'apellidopaterno' => 'BRAVO',
+            'apellidomaterno' => 'PEÑA',
+            'dni' => '73679627',
+            'telefono' => '974165087',
+            'email'=>'jhancarlos@unprg.edu.pe',
+            'direccion'=>'AV. LOS ANDES N°25-MIRAFLORES-TUMÁN',
+            'area_id'=>3,
+            'cargo_id'=>2,
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'KAREN',
+            'apellidopaterno' => 'NUÑEZ',
+            'apellidomaterno' => 'ROJAS',
+            'dni' => '71694857',
+            'telefono' => '920167291',
+            'email'=>'danielrnu@unprg.edu.pe',
+            'direccion'=>'AV. SAENZ PEÑA N°48-CHICLAYO',
+            'area_id'=>3,
+            'cargo_id'=>7,
+        ]);
+
+DB::table('personal')->insert([
+            'nombres' => 'JOSE LUIS',
+            'apellidopaterno' => 'SANCHEZ',
+            'apellidomaterno' => 'RIOJAS',
+            'dni' => '41069325',
+            'telefono' => '964192370',
+            'email'=>'jossanrio@unprg.edu.pe',
+            'direccion'=>'AV. MARISCAL N°52-FERREÑAFE',
+            'area_id'=>8,
+            'cargo_id'=>8,
+        ]);
+
         //personas comunes
         DB::table('personal')->insert([
             'nombres' => 'CESAR AUGUSTO',
@@ -385,6 +541,7 @@ class PersonalSeeder extends Seeder
             'direccion'=>'ELIAS AGUIRRE 277 - CHICLAYO',
         ]);
 
+  
         
     }
 }
