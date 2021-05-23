@@ -39,22 +39,22 @@ class GrupoMenuSeeder extends Seeder
         ]);    
         DB::table('grupomenu')->insert([
             'descripcion' => 'Ventas',
-            'icono' => 'fas fa-chart-line',
+            'icono' => 'fas fa-cart-arrow-down',
             'orden' => 6,
         ]);    
         DB::table('grupomenu')->insert([
             'descripcion' => 'Compras',
-            'icono' => 'fas fa-chart-line',
+            'icono' => 'fas fa-shopping-cart',
             'orden' => 7,
         ]);    
         DB::table('grupomenu')->insert([
             'descripcion' => 'Nóminas',
-            'icono' => 'fas fa-chart-line',
+            'icono' => 'fas fa-sticky-note',
             'orden' => 8,
         ]);    
         DB::table('grupomenu')->insert([
             'descripcion' => 'Activos Fijos',
-            'icono' => 'fas fa-chart-line',
+            'icono' => 'fas fa-desktop',
             'orden' => 9,
         ]);   
     }
