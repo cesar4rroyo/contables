@@ -21,11 +21,15 @@
 			<td>{{ $value->total }}</td>
 			<td>{{ $value->estado }}</td>
 			<td>{{ $value->empleado->apellodppaterno . ' ' . $value->empleado->apellidomaterno . ' ' . $value->empleado->nombres }}</td>
-			@if (session()->get('personal')['area_id']==5)
+			@if (session()->get('personal')['cargo_id']==7 || session()->get('personal')['id']==5)
+				<td>{!! Form::button('<div class="fas fa-check-circle"></div> Autorizar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'autorizar')).'\', \''.'Autorizar preparacion de cheques'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
 			@endif
-			<td>{!! Form::button('<div class="fas fa-check-circle"></div> Autorizar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'autorizar')).'\', \''.'Autorizar preparacion de cheques'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
-			<td>{!! Form::button('<div class="fas fa-money-bill"></div> Preparar Cheques', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'preparar')).'\', \''.'Preparar cheques de pago'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
-			<td>{!! Form::button('<div class="fas fa-check-double"></div> Distribuir Pagos', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'distribuir')).'\', \''.'Desembolsar efectivo'.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td>
+			@if (session()->get('personal')['cargo_id']==8 || session()->get('personal')['id']==5)
+				<td>{!! Form::button('<div class="fas fa-money-bill"></div> Preparar Cheques', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'preparar')).'\', \''.'Preparar cheques de pago'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
+			@endif
+			@if (session()->get('personal')['cargo_id']==2 || session()->get('personal')['id']==5)
+				<td>{!! Form::button('<div class="fas fa-check-double"></div> Distribuir Pagos', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'distribuir')).'\', \''.'Desembolsar efectivo'.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td>
+			@endif
             {{-- <td>{!! Form::button('<div class="fas fa-trash-alt"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td> --}}
 		</tr>
 		<?php

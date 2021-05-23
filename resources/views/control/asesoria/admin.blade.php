@@ -24,7 +24,9 @@
 						  <div class="card">
 							<div class="card-header">
 							  <div class="card-tools">
-								{!! Form::button(' <i class="fa fa-plus fa-fw"></i> Agregar', array('class' => 'btn  btn-outline-primary', 'id' => 'btnNuevo', 'onclick' => 'modal (\''.URL::route($ruta["create"], array('listar'=>'SI')).'\', \''.$titulo_registrar.'\', this);')) !!}
+								@if ((session()->get('personal')['cargo_id']==3) || session()->get('personal')['id']==5)
+									{!! Form::button(' <i class="fa fa-plus fa-fw"></i> Agregar', array('class' => 'btn  btn-outline-primary', 'id' => 'btnNuevo', 'onclick' => 'modal (\''.URL::route($ruta["create"], array('listar'=>'SI')).'\', \''.$titulo_registrar.'\', this);')) !!}
+								@endif
 							</div>
 							</div>
 							<!-- /.card-header -->

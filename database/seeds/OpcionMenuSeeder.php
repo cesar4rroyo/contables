@@ -112,7 +112,7 @@ class OpcionMenuSeeder extends Seeder
 
         DB::table('opcionmenu')->insert([
             'descripcion' => 'Compras',
-            'icono' => 'fas fa-list-ol',
+            'icono' => 'fas fa-shopping-cart',
             'link' => 'compra',
             'orden' => 1,
             'grupomenu_id' => 7
@@ -126,7 +126,7 @@ class OpcionMenuSeeder extends Seeder
         ]);
         DB::table('opcionmenu')->insert([
             'descripcion' => 'Activos Fijos',
-            'icono' => 'fas fa-list-ol',
+            'icono' => 'fas fa-desktop',
             'link' => 'compraactivos',
             'orden' => 3,
             'grupomenu_id' => 7
@@ -140,7 +140,7 @@ class OpcionMenuSeeder extends Seeder
         ]);
         DB::table('opcionmenu')->insert([
             'descripcion' => 'Nominas',
-            'icono' => 'fas fa-list-ol',
+            'icono' => 'fas fa-sticky-note',
             'link' => 'nomina',
             'orden' => 5,
             'grupomenu_id' => 8

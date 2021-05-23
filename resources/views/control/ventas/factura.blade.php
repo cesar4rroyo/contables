@@ -27,7 +27,7 @@
 
     <table width="100%">
         <tr>
-            <td valign="top"><img src="{{asset('assets/logo.png')}}" alt="" width="150" /></td>
+            <td valign="top"><img src="{{asset('imagenes/logo.jpeg')}}" alt="" width="150" /></td>
             <td align="right">
                 <h3>LAMBAYEQUE TECHNOLOGIES S.A.C.</h3>
                 <pre>

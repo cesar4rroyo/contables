@@ -25,11 +25,16 @@
 			<td>{{ $value->cliente->razonsocial }}</td>
 			<td>{{ $value->total }}</td>
             <td>
-				{!! Form::button('<div class="fas fa-truck-moving"></div> Enviar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'enviar')).'\', \''.'Envio de pedido'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}
+				@if ((session()->get('personal')['cargo_id']==9 && session()->get('personal')['area_id']==5) || session()->get('personal')['id']==5)
+					{!! Form::button('<div class="fas fa-truck-moving"></div> Enviar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'enviar')).'\', \''.'Envio de pedido'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}	
+				@endif
+				
 				{{-- {!! Form::button('<div class="glyphicon glyphicon-remove"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!} --}}
 			</td>
 			<td>
+				@if ((session()->get('personal')['cargo_id']==2 && session()->get('personal')['area_id']==9) || session()->get('personal')['id']==5)
 				{!! Form::button('<div class="fas fa-money-bill"></div> Pago', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pago')).'\', \''.'Documentacion de pago'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}
+				@endif
 			</td>
 			@if ($value->estado == 'ENVIADO')
 			<td>

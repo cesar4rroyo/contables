@@ -219,5 +219,17 @@ class ProductoSeeder extends Seeder
             'descripcion' => 'Monitor C27-20-27 Pulgadas',
             'marca' => 'LENOVO',
         ]);
+        DB::table('producto')->insert([
+            'codigo' => 'PDT-0031',
+            'preciounitario' => '1500.00',
+            'descripcion' =>'Sotfware Contable PLAYSOFT',
+            'marca' => '',
+        ]);
+        DB::table('producto')->insert([
+            'codigo' => 'PDT-0032',
+            'preciounitario' => '4200.00',
+            'descripcion' => 'Software ERP cloud',
+            'marca' => '',
+        ]);
     }
 }

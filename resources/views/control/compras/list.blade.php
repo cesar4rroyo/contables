@@ -24,10 +24,12 @@
 			<td>{{ $value->estado }}</td>
 			<td>{{ $value->proveedor->razonsocial }}</td>
 			<td>{{ $value->total }}</td>
-			@if (session()->get('personal')['area_id']==5)
+			@if (session()->get('personal')['cargo_id']==9 || session()->get('personal')['id']==5)
+				<td>{!! Form::button('<div class="fas fa-check-double"></div> Recepcionar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'recepcionar')).'\', \''.'Recepcionar Pedido'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
 			@endif
-			<td>{!! Form::button('<div class="fas fa-check-double"></div> Recepcionar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'recepcionar')).'\', \''.'Recepcionar Pedido'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
-			<td>{!! Form::button('<div class="fas fa-money-bill"></div> Pagar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pagar')).'\', \''.'Establecer Pago'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
+			@if (session()->get('personal')['cargo_id']==2 || session()->get('personal')['id']==5)
+				<td>{!! Form::button('<div class="fas fa-money-bill"></div> Pagar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'pagar')).'\', \''.'Establecer Pago'.'\', this);', 'class' => 'btn btn-sm btn-warning')) !!}</td>
+			@endif
             {{-- <td>{!! Form::button('<div class="fas fa-trash-alt"></div> Eliminar', array('onclick' => 'modal (\''.URL::route($ruta["delete"], array($value->id, 'SI')).'\', \''.$titulo_eliminar.'\', this);', 'class' => 'btn btn-sm btn-danger')) !!}</td> --}}
 		</tr>
 		<?php

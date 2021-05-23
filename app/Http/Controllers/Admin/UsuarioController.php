@@ -131,7 +131,7 @@ class UsuarioController extends Controller
             'login'       => 'required|max:20|unique:usuario,login,NULL,id,deleted_at,NULL',
             'password'    => 'required|max:20',
             'tipousuario_id' => 'required|integer|exists:tipousuario,id,deleted_at,NULL',
-            'personal_id'   => 'required|integer|exists:personal,id,deleted_at,NULL',
+           // 'personal_id'   => 'required|integer|exists:personal,id,deleted_at,NULL',
             );
 
         $mensajes = array(
@@ -139,7 +139,7 @@ class UsuarioController extends Controller
             'login.required' => 'Debe ingresar el nombre de usuario.',
             'password.required' => 'Debe ingresar una contraseña.',
             'tipousuario_id.required' => 'Debe seleccionar un tipo de usuario.',
-            'personal_id.required' => 'Debe seleccionar una persona.',
+          //  'personal_id.required' => 'Debe seleccionar una persona.',
         );
        
         $validacion = Validator::make($request->all(),$reglas,$mensajes);

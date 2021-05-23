@@ -21,5 +21,20 @@ class TipoUsuarioSeeder extends Seeder
         DB::table('tipousuario')->insert([
             'descripcion'=>'Personal'
         ]);  
+        DB::table('tipousuario')->insert([
+            'descripcion'=>'Ventas'
+        ]);  
+        DB::table('tipousuario')->insert([
+            'descripcion'=>'Compras'
+        ]);  
+        DB::table('tipousuario')->insert([
+            'descripcion'=>'Nominas'
+        ]);  
+        DB::table('tipousuario')->insert([
+            'descripcion'=>'Activos'
+        ]);  
+        DB::table('tipousuario')->insert([
+            'descripcion'=>'Conversion'
+        ]);  
     }
 }
