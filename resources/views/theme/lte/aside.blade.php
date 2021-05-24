@@ -11,21 +11,26 @@
                 <img src="{{asset("assets/$theme/dist/img/adminPic.png")}}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
+            @php
+               $cargo = session()->all('personal')['personal']['cargo']['descripcion']; 
+               $area = session()->all('personal')['personal']['area']['descripcion']; 
+            @endphp
             <div class="info">
-                <a href="#" class="d-block"> {{session()->get('usuario') ?? 'Invitado'}}</a>
+                <a href="#" class="d-block"> {{$cargo ?? 'Invitado' }} </a>
+                <a href="#" class="d-block"> {{ $area ?? 'Invitado' }} </a>
             </div>
         </div>
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#main" onclick="cargarRuta('{{URL::to('tramite')}}', 'container');" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
-                </li>
+                </li> --}}
                 @foreach ($opciones as $key=>$item)
                 @include("theme.lte.menu",["item"=>$item])
                 @endforeach

@@ -36,7 +36,7 @@
     <table>
         <thead>
         <tr>
-            <th colspan="10" style="text-align: center"><b>REPORTE VENTAS DESDE {{ date_format(date_create($fecinicio),  'd/m/Y') }} HASTA {{ date_format(date_create($fecfin),  'd/m/Y') }} - LAMBAYEQUE TECHNOLOGIES </b></th>
+            <th colspan="11" style="text-align: center"><b>REPORTE VENTAS DESDE {{ date_format(date_create($fecinicio),  'd/m/Y') }} HASTA {{ date_format(date_create($fecfin),  'd/m/Y') }} - LAMBAYEQUE TECHNOLOGIES </b></th>
         </tr>
         <tr>
             <th><b>NUMERO</b></th>

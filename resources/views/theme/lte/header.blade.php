@@ -16,8 +16,12 @@
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
+            @php
+                $cargo = session()->all('personal')['personal']['cargo']['descripcion'];
+                $area = session()->all('personal')['personal']['area']['descripcion'];
+            @endphp
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header disabled">Usuario: {{session()->get('usuario') ?? 'Invitado'}}</span>
+                <span class="dropdown-item dropdown-header disabled">Usuario: {{session()->get('usuario') ?? 'Invitado'}} </span>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-divider"></div>
                 <a onclick="cargarRuta('{{URL::to('persona/perfil')}}', 'container');" class="dropdown-item dropdown-footer">Cambiar contraseña</a>
