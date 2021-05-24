@@ -55,7 +55,7 @@ class Venta extends Model
 					$subquery->where('fecharegistro', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
 				}
 			})
-			->orderBy('created_at', 'DESC');
+			->orderBy('fecharegistro', 'DESC');
 	}
 
 	public function scopeNumeroSigue($query , $año)

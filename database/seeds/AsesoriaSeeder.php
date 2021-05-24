@@ -12,7 +12,7 @@ class AsesoriaSeeder extends Seeder
      */
     public function run()
     {
-        function fecha_aleatoria($formato = "Y-m-d", $limiteInferior = "2020-01-01", $limiteSuperior = "2021-05-05"){
+        function fecha_aleatoria($formato = "Y-m-d", $limiteInferior = "2021-01-01", $limiteSuperior = "2021-05-05"){
             // Convertimos la fecha como cadena a milisegundos
             $milisegundosLimiteInferior = strtotime($limiteInferior);
             $milisegundosLimiteSuperior = strtotime($limiteSuperior);
@@ -27,7 +27,8 @@ class AsesoriaSeeder extends Seeder
         for ($i=1; $i < 50; $i++) { 
             DB::table('asesoria')->insert([
                 'fecha' => fecha_aleatoria(),
-                'cliente_id' => rand(22,37),
+                'cliente_id' => rand(35,49),
+                'credito'=>rand(5000,50000),
                 'empleado_id' => rand(1,3),
             ]);
         }

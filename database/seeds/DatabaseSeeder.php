@@ -31,7 +31,10 @@ class DatabaseSeeder extends Seeder
             'carpetaempleado',
             'activoarea',
             'tarjetacontrol',
-            //'compra'
+            'compra',
+            'venta',
+            'comprobante',
+            'envio'
         ]);
         $this->call(CargoSeeder::class);
         $this->call(AreaSeeder::class);
@@ -51,9 +54,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CarpetaEmpleadoSeeder::class);
         $this->call(ActivoAreaSeeder::class);
         $this->call(TarjetaControlSeeder::class);
-        //$this->call(CompraSeeder::class);
-        // $this->call(ProcedimientoSeeder::class);
-        //$this->call(RolPersonaSeeder::class);
+        $this->call(CompraSeeder::class);
+        $this->call(VentaSeeder::class);
+        $this->call(ComprobanteSeeder::class);
+        $this->call(EnvioSeeder::class);
     }
     protected function truncateTablas(array $tablas)
     {

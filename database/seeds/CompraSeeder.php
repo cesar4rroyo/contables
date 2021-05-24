@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Control\Area;
 use App\Models\Control\Proveedor;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -14,7 +15,7 @@ class CompraSeeder extends Seeder
      */
     public function run()
     {
-        function fecha_aleatoria2($formato = "Y-m-d", $limiteInferior = "2020-05-05", $limiteSuperior = "2021-10-10"){
+        function fecha_aleatoria3($formato = "Y-m-d", $limiteInferior = "2021-01-01", $limiteSuperior = "2021-05-12"){
             // Convertimos la fecha como cadena a milisegundos
             $milisegundosLimiteInferior = strtotime($limiteInferior);
             $milisegundosLimiteSuperior = strtotime($limiteSuperior);
@@ -25,53 +26,37 @@ class CompraSeeder extends Seeder
             // Regresamos la fecha con el formato especificado y los milisegundos aleatorios
             return date($formato, $milisegundosAleatorios);
         }
-        for ($i=1; $i < 15; $i++) { 
+        function zero_fill($valor, $long = 0)
+        {
+            return str_pad($valor, $long, '0', STR_PAD_LEFT);
+        }
+        for ($i=1; $i < 100; $i++) { 
             DB::table('compra')->insert([
-                'numero' => '2021-' . $i,
-                'fechasolicitud'=>fecha_aleatoria2(),
-                'fechaesperada'=>Carbon::now(),
-                //'fechaentrega'=>Carbon::now(),
-                'estado'=>'EN ESPERA',
+                'numero' => 'CPROD2021-' . zero_fill($i,8),
+                'fechasolicitud'=>fecha_aleatoria3(),
+                'fechaesperada'=>Carbon::now()->subDays(10),
+                'fechaentrega'=>Carbon::now()->subDays(9),
+                'factura'=>'F000'.rand(1,9) . '-' . zero_fill(rand(1,900), 8),
+                'estado'=>'FINALIZADO',
                 'tipo'=>'PRODUCTOS',
                 'total'=>rand(500,15000),
                 'proveedor_id'=>rand(1, Proveedor::count()),
             ]);
         }
-        for ($i=1; $i < 15; $i++) { 
+        for ($i=1; $i < 80; $i++) { 
             DB::table('compra')->insert([
-                'numero' => '2021-' . $i,
-                'fechasolicitud'=>fecha_aleatoria2(),
-                'fechaesperada'=>Carbon::now(),
-                //'fechaentrega'=>Carbon::now(),
-                'estado'=>'EN ESPERA',
+                'numero' => 'CACT2021-000' . zero_fill($i,8),
+                'fechasolicitud'=>fecha_aleatoria3(),
+                'fechaesperada'=>Carbon::now()->subDays(10),
+                'fechaentrega'=>Carbon::now()->subDays(9),
+                'factura'=>'F000'.rand(1,9) . '-' . zero_fill(rand(1,500), 8),
+                'estado'=>'FINALIZADO',
                 'tipo'=>'ACTIVOS',
                 'total'=>rand(500,15000),
                 'proveedor_id'=>rand(1, Proveedor::count()),
+                'area_id'=>rand(1, Area::count()),
             ]);
         }
-        for ($i=15; $i < 30; $i++) { 
-            DB::table('compra')->insert([
-                'numero' => '2021-' . $i,
-                'fechasolicitud'=>fecha_aleatoria2(),
-                'fechaesperada'=>Carbon::now()->subDays(2),
-                'fechaentrega'=>Carbon::now(),
-                'estado'=>'ENTREGADO',
-                'tipo'=>'PRODUCTOS',
-                'total'=>rand(500,15000),
-                'proveedor_id'=>rand(1, Proveedor::count()),
-            ]);
-        }
-        for ($i=15; $i < 30; $i++) { 
-            DB::table('compra')->insert([
-                'numero' => '2021-' . $i,
-                'fechasolicitud'=>fecha_aleatoria2(),
-                'fechaesperada'=>Carbon::now()->subDays(2),
-                'fechaentrega'=>Carbon::now(),
-                'estado'=>'ENTREGADO',
-                'tipo'=>'ACTIVOS',
-                'total'=>rand(500,25000),
-                'proveedor_id'=>rand(1, Proveedor::count()),
-            ]);
-        }
+        
     }
 }

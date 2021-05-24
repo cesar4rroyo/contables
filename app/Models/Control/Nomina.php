@@ -40,6 +40,6 @@ class Nomina extends Model
 					$subquery->where('fecha', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
 				}
 			})
-			->orderBy('created_at', 'DESC');
+			->orderBy('fecha', 'DESC');
 	}
 }

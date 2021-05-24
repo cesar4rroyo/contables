@@ -53,7 +53,7 @@ class Compra extends Model
 					$subquery->where('fechasolicitud', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
 				}
 			})
-			->orderBy('created_at', 'DESC');
+			->orderBy('fechasolicitud', 'DESC');
 	}
 
 	public function scopeNumeroSigue($query , $año)

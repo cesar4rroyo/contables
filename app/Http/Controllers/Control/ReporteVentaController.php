@@ -62,7 +62,7 @@ class ReporteVentaController extends Controller
                 $subquery->where('fecharegistro', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
             }
         })
-        ->orderBy('created_at','ASC');
+        ->orderBy('fecharegistro','ASC');
 
 
         $lista1            = $resultado->get();

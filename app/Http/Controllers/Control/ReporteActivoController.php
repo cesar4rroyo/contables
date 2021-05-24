@@ -70,7 +70,7 @@ class ReporteActivoController extends Controller
             }
         })
         ->where('tipo', 'ACTIVOS')
-        ->orderBy('created_at','ASC');
+        ->orderBy('fechasolicitud','ASC');
 
 
         $lista1            = $resultado->get();

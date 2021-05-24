@@ -63,7 +63,7 @@ class ReporteCompraController extends Controller
             }
         })
         ->where('tipo', 'PRODUCTOS')
-        ->orderBy('created_at','ASC');
+        ->orderBy('fechasolicitud','ASC');
 
 
         $lista1            = $resultado->get();

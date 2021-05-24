@@ -56,7 +56,7 @@ class ReporteAsesoriaController extends Controller
                 $subquery->where('asesoria.fecha', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
             }
         })
-        ->orderBy('created_at','ASC');
+        ->orderBy('fecha','ASC');
 
 
         $lista1            = $resultado->get();

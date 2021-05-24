@@ -14,28 +14,28 @@ class PersonalSeeder extends Seeder
     {
         //empleados
         DB::table('personal')->insert([
-            'nombres' => 'JHANCARLOS',
+            'nombres' => 'JHANCARLOS CHETOS',
             'apellidopaterno' => 'BRAVO',
             'apellidomaterno' => 'PEÑA',
             'dni' => '73679627',
             'telefono' => '974165087',
-            'email'=>'jhancarlos@unprg.edu',
-            'direccion'=>'AV. LOS ANDES N°25 - MIRAFLORES - TUMÁN',
-            'area_id'=>4,
-            'cargo_id'=>1
+            'email'=>'jhancarlos@unprg.edu.pe',
+            'direccion'=>'AV. LOS ANDES N°25-MIRAFLORES-TUMÁN',
+            'area_id'=>3,
+            'cargo_id'=>2,
         ]);
         DB::table('personal')->insert([
             'nombres' => 'DIEGO',
-            'apellidopaterno' => 'VÁSQUEZ',
+            'apellidopaterno' => 'VAZQUES',
             'apellidomaterno' => 'ARAUJO',
             'dni' => '72845403',
             'telefono' => '983517083',
             'email'=>'dvasquezar@unprg.edu.pe',
-            'area_id'=>3,
-            'direccion'=>'POR LA GALLERA :v',
-            'cargo_id'=>1
-
+            'direccion'=>'AV. INDEPENDENCIA 736 - CHICLAYO',
+            'area_id'=>1,
+            'cargo_id'=>3,
         ]);
+
         DB::table('personal')->insert([
             'nombres' => 'RENZO DAVID',
             'apellidopaterno' => 'TORRES',
@@ -70,15 +70,15 @@ class PersonalSeeder extends Seeder
         ]);
 
         DB::table('personal')->insert([
-            'nombres' => 'JOSÉ REYNALDO',
+            'nombres' => 'JOSE REYNALDO',
             'apellidopaterno' => 'ZAFRA',
-            'apellidomaterno' => 'VARGAS',
+            'apellidomaterno' => 'VERGAS',
             'dni' => '71484638',
             'telefono' => '934466163',
-            'email' => 'jzafrav@unprg.edu.pe',
+            'email'=>'jzafrav@unprg.edu.pe',
+            'direccion'=>'CALLE INCANATO 464 - JLO',
             'area_id'=>1,
-            'direccion'=>'CALLE INCANATO 464 - JOSÉ LEONARDO ORTIZ',
-            'cargo_id'=>1,
+            'cargo_id'=>4
         ]);
 
         DB::table('personal')->insert([
@@ -129,18 +129,7 @@ DB::table('personal')->insert([
             'cargo_id'=>8
         ]);
 
-        DB::table('personal')->insert([
-            'nombres' => 'DIEGO',
-            'apellidopaterno' => 'VAZQUES',
-            'apellidomaterno' => 'ARAUJO',
-            'dni' => '72845403',
-            'telefono' => '983517083',
-            'email'=>'dvasquezar@unprg.edu.pe',
-            'direccion'=>'AV. INDEPENDENCIA 736 - CHICLAYO',
-            'area_id'=>1,
-            'cargo_id'=>3,
-        ]);
-
+        
 DB::table('personal')->insert([
             'nombres' => 'LESLIE DEL MILAGRO',
             'apellidopaterno' => 'ALCALDE',
@@ -163,17 +152,6 @@ DB::table('personal')->insert([
             'direccion'=>'AV. EL ZOORO - EL BOSQUE- LA VICTORIA',
             'area_id'=>9,
             'cargo_id'=>2,
-        ]);
-        DB::table('personal')->insert([
-            'nombres' => 'JOSE REYNALDO',
-            'apellidopaterno' => 'ZAFRA',
-            'apellidomaterno' => 'VARGAS',
-            'dni' => '71484638',
-            'telefono' => '934466163',
-            'email'=>'jzafrav@unprg.edu.pe',
-            'direccion'=>'CALLE INCANATO 464 - JLO',
-            'area_id'=>1,
-            'cargo_id'=>4
         ]);
 
 DB::table('personal')->insert([
@@ -201,15 +179,15 @@ DB::table('personal')->insert([
         ]);
 
         DB::table('personal')->insert([
-            'nombres' => 'JHANCARLOS',
-            'apellidopaterno' => 'BRAVO',
+            'nombres' => 'ANITA',
+            'apellidopaterno' => 'PEREZ',
             'apellidomaterno' => 'PEÑA',
             'dni' => '73679627',
             'telefono' => '974165087',
             'email'=>'jhancarlos@unprg.edu.pe',
             'direccion'=>'AV. LOS ANDES N°25-MIRAFLORES-TUMÁN',
-            'area_id'=>3,
-            'cargo_id'=>2,
+            'area_id'=>9,
+            'cargo_id'=>3
         ]);
 
 DB::table('personal')->insert([
@@ -393,7 +371,7 @@ DB::table('personal')->insert([
             'razonsocial' => 'PANADERIA ACOSTA',
             'telefono' => '987627298',
             'email' => 'panaderiaacosta@gmail.com',
-            'representante' => 'RENZO TORRES ACOSTA',
+            'representante' => 'RENZO KABRO TORRES ACOSTA',
             'direccion'=>'CALLE CAPAC YUPANQUI 971 - LA VICTORIA',
         ]);
 
