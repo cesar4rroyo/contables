@@ -21,7 +21,7 @@
 			<td>{{ $value->total }}</td>
 			<td>{{ $value->estado }}</td>
 			<td>{{ $value->empleado->apellodppaterno . ' ' . $value->empleado->apellidomaterno . ' ' . $value->empleado->nombres }}</td>
-			@if ((session()->get('personal')['cargo_id']==7 || session()->get('personal')['id']==5) && $value->estado=='REGISTRADO')
+			@if (((session()->get('personal')['cargo_id']==7 && session()->get('personal')['area_id']==9) || session()->get('personal')['id']==5) && $value->estado=='REGISTRADO')
 				<td>{!! Form::button('<div class="fas fa-check-circle"></div> Autorizar', array('onclick' => 'modal (\''.URL::route($ruta["edit"], array($value->id, 'listar'=>'SI', 'tipo'=>'autorizar')).'\', \''.'Autorizar preparacion de cheques'.'\', this);', 'class' => 'btn btn-sm btn-info')) !!}</td>
 			@endif
 			@if ((session()->get('personal')['cargo_id']==8 || session()->get('personal')['id']==5) && $value->estado=='AUTORIZADO POR RESPONS. CUENTAS')
