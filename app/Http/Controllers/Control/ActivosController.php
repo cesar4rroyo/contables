@@ -52,7 +52,7 @@ class ActivosController extends Controller
         $area_id          = Libreria::getParam($request->input('area'));
         $rol              = Libreria::getParam($request->input('rol'));
         $cargo_id         = Libreria::getParam($request->input('cargo'));
-        $resultado        = Compra::where('tipo', 'ACTIVOS')->orderBy('id'); 
+        $resultado        = Compra::where('tipo', 'ACTIVOS')->orderBy('fechasolicitud', 'DESC'); 
         $lista            = $resultado->get();
         $cabecera         = array();
         $cabecera[]       = array('valor' => '#', 'numero' => '1');

@@ -45,6 +45,7 @@
             <th><b>FECHA ENVIO</b></th>
             <th><b>ENVIOS</b></th>
             <th><b>TOTAL</b></th>
+            <th><b>DSCTO</b></th>
             <th><b>CLIENTE</b></th>
             <th><b>FACTURA</b></th>
             <th><b>ASESORIA</b></th>
@@ -63,8 +64,15 @@
                 <td class="padding-left">{{ date_format(date_create($value->fechaenvio),  'd/m/Y') }}</td>
                 <td class="padding-left">{{ ($value->envio) ? count($value->envio) : '-'}}</td>
                 <td class="padding-left">{{ $value->total }}</td>
+                @php
+                    $flag=false;
+                    if($value->descuento){
+                        $flag=true;
+                    }
+                @endphp
+                <td class="padding-left">{{ ($flag) ? 'SI' : 'NO' }}</td>
                 <td class="padding-left">{{ $value->cliente->razonsocial }}</td>
-                <td class="padding-left">{{($value->comprobante) ? $value->comprobante->numero : null }}</td>
+                <td class="padding-left">{{($value->comprobante) ? $value->comprobante->numero : 'NO DISPONIBLE' }}</td>
                 <td class="padding-left">{{ ($value->asesoria) ? 'SI' : 'NO' }}</td>
                 @php
                     $numero='NO DISPONIBLE';

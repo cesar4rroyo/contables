@@ -42,28 +42,28 @@ class ReporteCompraController extends Controller
         $cliente      = Libreria::getParam($request->input('cliente'));
 
         $resultado        = Compra::with('detallecompra')
-        ->where(function ($subquery) use ($fecinicio) {
-            if (!is_null($fecinicio) && strlen($fecinicio) > 0) {
-                $subquery->where('compra.fechasolicitud', '>=', date_format(date_create($fecinicio), 'Y-m-d H:i:s'));
-            }
-        })
-        ->where(function ($subquery) use ($cliente) {
-            if (!is_null($cliente) && strlen($cliente) > 0) {
-                $subquery->where('compra.proveedor_id', '=' ,$cliente);
-            }
-        })
-        ->where(function ($subquery) use ($estado) {
-            if (!is_null($estado) && strlen($estado) > 0) {
-                $subquery->where('estado', $estado);
-            }
-        })
-        ->where(function ($subquery) use ($fecfin) {
-            if (!is_null($fecfin) && strlen($fecfin) > 0) {
-                $subquery->where('compra.fechasolicitud', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
-            }
-        })
-        ->where('tipo', 'PRODUCTOS')
-        ->orderBy('fechasolicitud','ASC');
+            ->where(function ($subquery) use ($fecinicio) {
+                if (!is_null($fecinicio) && strlen($fecinicio) > 0) {
+                    $subquery->where('compra.fechasolicitud', '>=', date_format(date_create($fecinicio), 'Y-m-d H:i:s'));
+                }
+            })
+            ->where(function ($subquery) use ($cliente) {
+                if (!is_null($cliente) && strlen($cliente) > 0) {
+                    $subquery->where('compra.proveedor_id', '=' ,$cliente);
+                }
+            })
+            ->where(function ($subquery) use ($estado) {
+                if (!is_null($estado) && strlen($estado) > 0) {
+                    $subquery->where('estado', $estado);
+                }
+            })
+            ->where(function ($subquery) use ($fecfin) {
+                if (!is_null($fecfin) && strlen($fecfin) > 0) {
+                    $subquery->where('compra.fechasolicitud', '<=', date_format(date_create($fecfin), 'Y-m-d H:i:s'));
+                }
+            })
+            ->where('tipo', 'PRODUCTOS')
+            ->orderBy('fechasolicitud','ASC');
 
 
         $lista1            = $resultado->get();
