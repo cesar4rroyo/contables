@@ -13,7 +13,7 @@ class Rol extends Model
     protected $fillable = ['descripcion'];
 
     public function personal()
-    {
+        {
         return $this->belongsToMany(Personal::class, 'rolpersonal');
-    }
+        }
 }
